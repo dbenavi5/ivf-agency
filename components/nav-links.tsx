@@ -13,11 +13,10 @@ import {
   // SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Send } from "lucide-react";
 
 const sections = [
   {
-    id: "about",
+    id: "about-us",
     label: "About Us",
   },
   {
@@ -28,11 +27,20 @@ const sections = [
     id: "pricing",
     label: "Pricing",
   },
+  {
+    id: "contact-us",
+    label: "Contact Us",
+  },
 ];
 
 export const NavLinks = () => {
   const [isOpen, setIsOpen] = useState(false);
   const isMobile = useMedia("(max-width: 1024px)", false);
+
+  // Function to close the mobile nav sheet when a link is clicked
+  const closeNav = () => {
+    setIsOpen(false);
+  };
 
   if (isMobile) {
     return (
@@ -60,6 +68,7 @@ export const NavLinks = () => {
                   key={section.label}
                   href={`#${section.id}`}
                   className="text-black font-semibold"
+                  onClick={closeNav} // Close nav on click
                 >
                   {section.label}
                 </Link>

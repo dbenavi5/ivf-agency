@@ -21,8 +21,8 @@ export const Header = () => {
   }, []);
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-[#9d8189] text-white shadow-md" : "bg-transparent text-white z-10"
+      className={`fixed w-full h-20 top-0 z-50 transition-all duration-300 ${
+        isScrolled ? "bg-[#9d8189] text-white shadow-md fixed" : "bg-transparent text-white z-10"
         }`}
         style={{
           backgroundColor: isScrolled ? '#9d8189' : 'transparent',
