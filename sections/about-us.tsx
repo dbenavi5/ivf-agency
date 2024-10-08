@@ -10,7 +10,7 @@ export const AboutUs = () => {
   return (
     <section id="about-us" className="mt-24 z-0 scroll-mt-20">
       <div className="container mx-auto px-6 md:px-12">
-        <h2 className="text-3xl lg:text-4xl font-bold flex items-center justify-center mb-16">
+        <h2 className="text-3xl lg:text-4xl font-bold text-[#6260d9] flex items-center justify-center mb-16">
           Who are we?
         </h2>
         {/* Our Mission Section */}

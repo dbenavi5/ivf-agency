@@ -25,10 +25,9 @@ export const Header = () => {
       className={cn(
         `fixed w-full h-20 top-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "bg-[#d8a2a2] text-black shadow-md"
+            ? "bg-[#c6d03a] text-black shadow-md"
             : "bg-transparent text-white z-10"
         }`
-        // `${isScrolled ? "bg-[#9d8189]" : "bg-transparent"}`
       )}
     >
       <div className="py-5">
@@ -39,7 +38,7 @@ export const Header = () => {
                 Inject{" "}
                 <span
                   className={cn(
-                    isScrolled ? "text-[#8b2d2d]" : "text-[#e9a3a3]"
+                    isScrolled ? "text-[#6260d9]" : "text-[#c6d03a]"
                   )}
                 >
                   IVF
@@ -57,7 +56,7 @@ export const Header = () => {
             <NavLinks
               className={cn(
                 "hover:border-b-2 pb-2",
-                isScrolled ? "text-black border-black" : "text-white border-[#ffcad4]"
+                isScrolled ? "text-black border-[#6260d9]" : "text-white border-[#c6d03a]"
               )}
             />
           </div>

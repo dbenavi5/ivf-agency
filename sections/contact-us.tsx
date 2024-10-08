@@ -1,7 +1,7 @@
 "use client";
 
 import { useForm, ValidationError } from "@formspree/react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -31,10 +31,18 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export const ContactUs = () => {
   const [date, setDate] = useState<Date>();
   const [state, handleSubmit] = useForm(process.env.NEXT_PUBLIC_FORMSPREE_ID!);
+  const [captcha, setCaptcha] = useState<string | null>();
+
+  const recaptchaRef = useRef(null);
+
+  const onCaptchaChange = (token: string | null) => {
+    setCaptcha(token);
+  };
 
   if (state.succeeded) {
     return <p className="text-center">Thank you for your inquiry!</p>;
@@ -46,7 +54,7 @@ export const ContactUs = () => {
       className="w-full max-w-2xl mx-auto my-20 scroll-mt-20"
     >
       <CardHeader>
-        <CardTitle className="text-center">
+        <CardTitle className="text-center text-[#6260d9]">
           IVF Concierge Service Inquiry
         </CardTitle>
         <CardDescription>
@@ -235,10 +243,16 @@ export const ContactUs = () => {
               </a>
             </Label>
           </div>
-
+          <ReCAPTCHA
+            className="items-center justify-center flex py-5"
+            size="normal"
+            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+            ref={recaptchaRef}
+            onChange={onCaptchaChange}
+          />
           <CardFooter>
             <Button
-              variant='primaryBtn'
+              variant="primaryBtn"
               type="submit"
               disabled={state.submitting}
               className="w-full"

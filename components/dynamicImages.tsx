@@ -22,6 +22,7 @@ export default async function DynamicImages({
         placeholder="blur"
         blurDataURL={base64}
         fill // Ensures the image fills the container
+        className="z-10"
         style={{objectFit:"cover"}} // Ensure the image covers the container without distortion
         quality={80} // Optimize for performance
         sizes="(max-width: 768px) 100vw, (min-width: 768px) 50vw, 100vw"
