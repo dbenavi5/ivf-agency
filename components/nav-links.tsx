@@ -13,6 +13,7 @@ import {
   // SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { cn } from "@/lib/utils";
 
 const sections = [
   {
@@ -33,7 +34,10 @@ const sections = [
   },
 ];
 
-export const NavLinks = () => {
+type Props = {
+  className?: string;
+};
+export const NavLinks = ({ className }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const isMobile = useMedia("(max-width: 1024px)", false);
 
@@ -83,11 +87,7 @@ export const NavLinks = () => {
   return (
     <nav className="hidden lg:flex items-center justify-between gap-6">
       {sections.map((section) => (
-        <Link
-          key={section.label}
-          href={`#${section.id}`}
-          className={"text-white hover:font-medium hover:text-[#ffcad4]"}
-        >
+        <Link key={section.label} href={`#${section.id}`} className={className}>
           {section.label}
         </Link>
       ))}

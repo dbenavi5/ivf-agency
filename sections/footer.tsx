@@ -30,12 +30,12 @@ export const Footer = () => {
             </div>
           </div>
           <Link href='/'>
-            <div className="mb-10 lg:mb-0 cursor-pointer">
+            <div className="mb-8 lg:mb-0 cursor-pointer flex items-center justify-center h-[100px] w-[200px]">
               <Image
                 src={LOGO_URL}
                 alt="logo"
-                width={200}
-                height={200}
+                width={20}
+                height={20}
                 style={{ width: "auto", height: "auto" }}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
                 quality={75}

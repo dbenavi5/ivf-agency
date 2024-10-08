@@ -11,8 +11,8 @@ export const Pricing = () => {
       </h2>
       <div className="container mx-auto">
         {/* Background with gradient */}
-        <div className="relative w-full max-w-4xl mx-auto p-8 rounded-[30px] bg-gradient-to-r from-[#22333b] to-[#3d5b69] overflow-hidden">
-          <h3 className="flex items-center justify-center text-white mb-6 font-semibold text-xl">
+        <div className="relative w-full max-w-4xl mx-auto p-8 rounded-[30px] bg-[#d8a2a2]/10 overflow-hidden">
+          <h3 className="flex items-center justify-center  mb-6 font-semibold text-xl">
             Choose an Option:
           </h3>
           {/* Content section */}
@@ -20,44 +20,44 @@ export const Pricing = () => {
             {/* Pricing Card 1 */}
             <div className="bg-white bg-opacity-10 text-center p-6 rounded-lg shadow-md transition-transform transform hover:scale-105 hover:bg-opacity-20">
               <div className="flex items-center justify-center">
-                <FaSyringe className="text-4xl text-white mb-4" />
+                <FaSyringe className="text-4xl text-[#d27474] mb-4" />
               </div>
 
-              <h3 className="text-lg font-bold text-white">
+              <h3 className="text-lg font-bold">
                 Standard Daily Injections, Per Visit
               </h3>
-              <p className="text-xl font-semibold text-white mt-2">$150</p>
+              <p className="text-xl font-semibold mt-2">$150</p>
             </div>
 
             {/* Pricing Card 2 */}
             <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md transition-transform transform hover:scale-105 hover:bg-opacity-20">
               <div className="flex items-center justify-center">
-                <LiaSuperpowers className="text-4xl text-white mb-4" />
+                <LiaSuperpowers className="text-4xl text-[#d27474] mb-4" />
               </div>
-              <h3 className="text-lg font-bold text-white">
+              <h3 className="text-lg font-bold">
                 Trigger Shot Only
               </h3>
-              <p className="text-xl font-semibold text-white mt-2">$225</p>
+              <p className="text-xl font-semibold mt-2">$225</p>
             </div>
 
             {/* Pricing Card 3 */}
             <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md transition-transform transform hover:scale-105 hover:bg-opacity-20">
               <div className="flex items-center justify-center">
-                <FaUserMd className="text-4xl text-white mb-4" />
+                <FaUserMd className="text-4xl text-[#d27474] mb-4" />
               </div>
-              <h3 className="text-lg font-bold text-white">Coaching Session</h3>
-              <p className="text-xl font-semibold text-white mt-2">$175</p>
+              <h3 className="text-lg font-bold">Coaching Session</h3>
+              <p className="text-xl font-semibold mt-2">$175</p>
             </div>
 
             {/* Pricing Card 4 */}
             <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md transition-transform transform hover:scale-105 hover:bg-opacity-20">
               <div className="flex items-center justify-center">
-                <MdOutlineAddLocation className="text-4xl text-white mb-4" />
+                <MdOutlineAddLocation className="text-4xl text-[#d27474] mb-4" />
               </div>
-              <h3 className="text-lg font-bold text-white">
+              <h3 className="text-lg font-bold">
                 Daily Injections, 2 Visits a Day
               </h3>
-              <p className="text-xl font-semibold text-white mt-2">$280</p>
+              <p className="text-xl font-semibold mt-2">$280</p>
             </div>
           </div>
         </div>

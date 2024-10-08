@@ -22,7 +22,7 @@ export const Hero = () => {
       <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white to-transparent z-10" />
       <div className="container">
         <div className="relative z-10 text-center justify-center">
-          <h1 className="text-4xl lg:text-5xl font-bold tracking-tighter bg-gradient-to-b from-white to-[#f4acb7] text-transparent bg-clip-text mt-60 z-10">
+          <h1 className="text-4xl lg:text-5xl font-bold tracking-tighter bg-gradient-to-r from-[#d27474] via-[#d8a2a2] to-[#f4acb7] text-transparent bg-clip-text mt-60 z-10">
             Your Path to Parenthood Starts Here
           </h1>
           <p className="text-md lg:text-xl text-[#fce7ea] tracking-tight mt-6 lg:mt-10 z-10">
@@ -33,7 +33,7 @@ export const Hero = () => {
           </p>
           {/* Buttons */}
           <div className="flex justify-center gap-1 items-center mt-6 lg:mt-16">
-            <Button variant="primaryBtn" className="text-sm lg:text-md">
+            <Button variant="primaryBtn" className="flex justify-center items-center text-sm lg:text-lg p-4 lg:p-6">
               <Link
                 href="#contact-us"
                 className="flex items-center justify-center"
