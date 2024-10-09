@@ -2,7 +2,6 @@
 
 import { useForm, ValidationError } from "@formspree/react";
 import { useRef, useState } from "react";
-import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -39,7 +38,6 @@ export const ContactUs = () => {
   const [date, setDate] = useState<Date>();
   const [state, handleSubmit] = useForm(process.env.NEXT_PUBLIC_FORMSPREE_ID!);
   const [captcha, setCaptcha] = useState<string | null>();
-  const { toast } = useToast();
 
   const recaptchaRef = useRef(null);
 
@@ -47,15 +45,14 @@ export const ContactUs = () => {
     setCaptcha(token);
   };
 
-  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    handleSubmit(e);
-    if (state.succeeded) {
-      toast({
-        variant: "success",
-        title: "Inquiry sent, thank you!",
-      });
-    }
-  };
+  if (state.succeeded) {
+  
+    return (
+      <div className="container w-96">
+        <p className="w-full text-center border border-[#c6d03a] p-4 rounded-md">Thank you for your inquiry!</p>
+      </div>
+    )
+  }
 
   return (
     <Card
@@ -72,7 +69,7 @@ export const ContactUs = () => {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleFormSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="name">Your Full Name *</Label>

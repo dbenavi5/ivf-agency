@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { IoMdArrowRoundBack } from "react-icons/io";
 
 export const LegalHeader = () => {
   const router = useRouter();
@@ -18,12 +19,13 @@ export const LegalHeader = () => {
                 Concierge Services
               </div>
             </a>
-            <div>
+            <div className="">
               <button
                 onClick={() => router.back()}
-                className="hover:border-b-2 border-[#6260d9] pb-2"
+                className="flex items-center justify-centerhover:border-b-2 border-[#6260d9] pb-2"
               >
-                Go Back
+                <IoMdArrowRoundBack className="size-4 mr-2"/>
+                <p className="hidden lg:inline-flex">Go Back</p>
               </button>
             </div>
           </div>
