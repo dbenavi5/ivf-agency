@@ -2,6 +2,7 @@
 
 import { useForm, ValidationError } from "@formspree/react";
 import { useRef, useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -37,6 +38,7 @@ export const ContactUs = () => {
   const [date, setDate] = useState<Date>();
   const [state, handleSubmit] = useForm(process.env.NEXT_PUBLIC_FORMSPREE_ID!);
   const [captcha, setCaptcha] = useState<string | null>();
+  const { toast } = useToast();
 
   const recaptchaRef = useRef(null);
 
@@ -45,7 +47,10 @@ export const ContactUs = () => {
   };
 
   if (state.succeeded) {
-    return <p className="text-center">Thank you for your inquiry!</p>;
+    return toast({
+      variant: "success",
+      title: "Inquiry sent, thank you!",
+    });
   }
 
   return (

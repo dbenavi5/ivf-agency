@@ -1,11 +1,24 @@
+'use client';
+
 import { Phone, Mail } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import { FaYelp, FaInstagram } from "react-icons/fa6";
+import { useToast } from "@/hooks/use-toast"
 
 const LOGO_URL =
   "https://res.cloudinary.com/dpj6rkbus/image/upload/v1728158238/ivf_logo_jlerxf.webp";
+
 export const Footer = () => {
+  const { toast } = useToast();
+
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text);
+    toast({
+      variant: "success",
+      title: "Copied to clipboard",
+    })
+  };
+
   return (
     <footer className="bg-muted mt-10">
       <div className="container text-center justify-center px-4 py-8 mx-auto sm:px-6 lg:px-8">
@@ -13,23 +26,23 @@ export const Footer = () => {
           <div className="space-y-4 mb-8 lg:mb-0">
             <p className="font-medium text-lg">Contact Us</p>
             <div className="flex flex-col space-y-2">
-              <Link
-                href="tel:+14152360074"
+              <button
+                onClick={() => copyToClipboard("415.236.0074")}
                 className="flex items-center justify-center hover:text-primary"
               >
                 <Phone className="size-5 mr-2 text-green-600 fill-current" />
                 415.236.0074
-              </Link>
-              <Link
-                href="mailto:info@injectivf.com"
+              </button>
+              <button
+                onClick={() => copyToClipboard("info@injectivf.com")}
                 className="flex items-center hover:text-primary"
               >
                 <Mail className="size-5 mr-2 text-indigo-600 fill-current stroke-white" />
                 info@injectivf.com
-              </Link>
+              </button>
             </div>
           </div>
-          <Link href='/'>
+          <a href="/">
             <div className="mb-8 lg:mb-0 cursor-pointer flex items-center justify-center h-[100px] w-[200px]">
               <Image
                 src={LOGO_URL}
@@ -41,11 +54,11 @@ export const Footer = () => {
                 quality={75}
               />
             </div>
-          </Link>
+          </a>
           <div className="space-y-4">
             <p className="font-medium text-lg">Follow Us</p>
             <div className="flex items-center justify-center space-x-4">
-              <Link
+              <a
                 href="https://www.yelp.com/biz/injectivf-san-francisco"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -53,8 +66,8 @@ export const Footer = () => {
               >
                 <span className="sr-only">Yelp</span>
                 <FaYelp className="size-6" />
-              </Link>
-              <Link
+              </a>
+              <a
                 href="https://www.instagram.com/injectivf/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -62,7 +75,7 @@ export const Footer = () => {
               >
                 <span className="sr-only">Instagram</span>
                 <FaInstagram className="size-6" />
-              </Link>
+              </a>
             </div>
           </div>
         </div>
