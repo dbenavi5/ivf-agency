@@ -49,7 +49,7 @@ export const LegalContent = () => {
         <p>
           <span className="font-semibold">I.</span> Description of Services: The
           parties agree that the Service Provider is to administer prescribed
-          IVF services in accordance with the Client’s Physician's instructions.
+          IVF services in accordance with the Client&apos;s Physician's instructions.
         </p>
         <p>
           <span className="font-semibold">II.</span> Payment: Payment of

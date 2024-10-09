@@ -1,4 +1,3 @@
-import { Footer } from "@/sections/footer";
 import { LegalHeader } from "./components/legal-header";
 
 export default function LegalLayout({

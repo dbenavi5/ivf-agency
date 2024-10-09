@@ -1,4 +1,3 @@
-import { Footer } from "@/sections/footer";
 import { AboutUs } from "@/sections/about-us";
 import { Header } from "@/sections/header";
 import { ContactUs } from "@/sections/contact-us";
