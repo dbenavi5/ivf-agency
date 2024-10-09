@@ -1,4 +1,5 @@
 import DynamicImages from "@/components/dynamicImages";
+import { MotionDiv } from "@/components/motion-div";
 import { Button } from "@/components/ui/button";
 import { Send } from "lucide-react";
 import Link from "next/link";
@@ -22,18 +23,32 @@ export const Hero = () => {
       <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white to-transparent z-10" />
       <div className="container">
         <div className="relative z-10 text-center justify-center">
-          <h1 className="text-4xl lg:text-5xl font-bold tracking-tighter bg-gradient-to-r from-[#c6d03a] to-[#d6e388] text-transparent bg-clip-text mt-60 z-10">
-            Your Path to Parenthood Starts Here
-          </h1>
-          <p className="text-md lg:text-xl text-[#fbfcf1] tracking-tight mt-6 lg:mt-10 z-10">
-            Experience the comfort and care of InjectIVF, a female-owned
-            business offering reliable fertility injection services right at
-            home. With compassionate support, we’re here to make managing your
-            fertility care as stress-free as possible.
-          </p>
+          <MotionDiv
+            initial={{ x: -100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 1, delay: 0.5 }}
+          >
+            <h1 className="text-4xl lg:text-5xl font-bold tracking-tighter bg-gradient-to-r from-[#c6d03a] to-[#d6e388] text-transparent bg-clip-text mt-60 z-10">
+              Your Path to Parenthood Starts Here
+            </h1>
+            <p className="text-md lg:text-xl text-[#fbfcf1] tracking-tight mt-6 lg:mt-10 z-10">
+              Experience the comfort and care of InjectIVF, a female-owned
+              business offering reliable fertility injection services right at
+              home. With compassionate support, we’re here to make managing your
+              fertility care as stress-free as possible.
+            </p>
+          </MotionDiv>
           {/* Buttons */}
-          <div className="flex justify-center gap-1 items-center mt-6 lg:mt-16">
-            <Button variant="primaryBtn" className="flex justify-center items-center text-sm lg:text-lg p-4 lg:p-6">
+          <MotionDiv
+            initial={{ y: -100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1, delay: 0 }}
+            className="flex justify-center gap-1 items-center mt-6 lg:mt-16"
+          >
+            <Button
+              variant="primaryBtn"
+              className="flex justify-center items-center text-sm lg:text-lg p-4 lg:p-6"
+            >
               <Link
                 href="#contact-us"
                 className="flex items-center justify-center"
@@ -42,7 +57,7 @@ export const Hero = () => {
                 <Send className="ml-[10px] size-5" />
               </Link>
             </Button>
-          </div>
+          </MotionDiv>
         </div>
       </div>
     </section>

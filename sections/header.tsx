@@ -4,6 +4,7 @@ import Link from "next/link";
 import { NavLinks } from "@/components/nav-links";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -34,7 +35,12 @@ export const Header = () => {
         <div className="container">
           <div className="flex items-center justify-between">
             <Link href="/" className="cursor-pointer" prefetch={false}>
-              <h2 className="text-2xl font-semibold">
+              <motion.h2
+                initial={{ x: -100, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 1, delay: 0 }}
+                className="text-2xl font-semibold"
+              >
                 Inject{" "}
                 <span
                   className={cn(
@@ -43,22 +49,36 @@ export const Header = () => {
                 >
                   IVF
                 </span>
-              </h2>
-              <div
+              </motion.h2>
+              <motion.div
+                initial={{ x: -100, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 1, delay: 0.5 }}
                 className={cn(
                   "text-xs font-medium",
                   !isScrolled ? "text-zinc-300" : "text-zinc-600"
                 )}
               >
                 Concierge Services
-              </div>
+              </motion.div>
             </Link>
-            <NavLinks
-              className={cn(
-                "hover:border-b-2 pb-2",
-                isScrolled ? "text-black border-[#6260d9]" : "text-white border-[#c6d03a]"
-              )}
-            />
+            <motion.div
+              initial={{ x: 100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 1, delay: 0 }}
+            >
+              <NavLinks
+                className={cn(
+                  "hover:border-b-2 pb-2",
+                  isScrolled
+                    ? "text-black border-[#6260d9]"
+                    : "text-white border-[#c6d03a]"
+                )}
+                mobileIconClassName={
+                  isScrolled ? "fill-[#6260d9]" : "fill-[#ffffff]"
+                }
+              />
+            </motion.div>
           </div>
         </div>
       </div>

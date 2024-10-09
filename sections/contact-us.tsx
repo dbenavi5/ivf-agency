@@ -243,22 +243,28 @@ export const ContactUs = () => {
               </a>
             </Label>
           </div>
-          <ReCAPTCHA
-            className="items-center justify-center flex py-5"
-            size="normal"
-            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
-            ref={recaptchaRef}
-            onChange={onCaptchaChange}
-          />
-          <CardFooter>
-            <Button
-              variant="primaryBtn"
-              type="submit"
-              disabled={state.submitting}
-              className="w-full"
-            >
-              Submit Inquiry
-            </Button>
+          <CardFooter className="flex flex-col gap-y-10">
+            <ReCAPTCHA
+              className="items-center justify-center flex py-5"
+              size="normal"
+              sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+              ref={recaptchaRef}
+              onChange={onCaptchaChange}
+            />
+            {captcha ? (
+              <Button
+                variant="primaryBtn"
+                type="submit"
+                disabled={state.submitting}
+                className="w-full"
+              >
+                Submit Inquiry
+              </Button>
+            ) : (
+              <Button variant="primaryBtn" disabled>
+                ReCAPTCHA before submitting
+              </Button>
+            )}
           </CardFooter>
         </form>
       </CardContent>

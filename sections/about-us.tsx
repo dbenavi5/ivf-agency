@@ -1,5 +1,6 @@
 import { Metrics } from "@/components/metrics";
 import Image from "next/image";
+import { MotionDiv } from "@/components/motion-div";
 
 const URL_MISSION =
   "https://res.cloudinary.com/dpj6rkbus/image/upload/w_600,h_400,c_fill,q_auto,f_auto/v1727898564/pregnancy-7214373_640_otfc4m.jpg";
@@ -15,7 +16,12 @@ export const AboutUs = () => {
         </h2>
         {/* Our Mission Section */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-16 py-0 lg:py-10">
-          <div className="md:w-1/2">
+          <MotionDiv
+            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: -100 }}
+            transition={{ duration: 1 }}
+            className="md:w-1/2"
+          >
             <h3 className="text-2xl lg:text-3xl font-bold mb-4">Our Mission</h3>
             <p className="text-sm lg:text-lg leading-relaxed">
               At InjectIVF, we treat every patient like family. That means
@@ -25,8 +31,13 @@ export const AboutUs = () => {
               back control of your fertility journey, with a service that&apos;s
               as comforting as it is professional.
             </p>
-          </div>
-          <div className="md:w-1/2">
+          </MotionDiv>
+          <MotionDiv
+            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: 100 }}
+            transition={{ duration: 1 }}
+            className="md:w-1/2"
+          >
             <Image
               src={URL_MISSION}
               alt="Mission Image"
@@ -37,12 +48,17 @@ export const AboutUs = () => {
               className="rounded-lg shadow-lg"
               priority
             />
-          </div>
+          </MotionDiv>
         </div>
 
         {/* Our Story Section */}
         <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-8 py-10">
-          <div className="md:w-1/2">
+          <MotionDiv
+            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: -100 }}
+            transition={{ duration: 1 }}
+            className="md:w-1/2"
+          >
             <Image
               src={URL_STORY}
               alt="Story Image"
@@ -53,21 +69,27 @@ export const AboutUs = () => {
               className="rounded-lg shadow-lg"
               priority
             />
-          </div>
-          <div className="md:w-1/2">
+          </MotionDiv>
+          <MotionDiv
+            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: 100 }}
+            transition={{ duration: 2 }}
+            className="md:w-1/2"
+          >
             <h3 className="text-2xl lg:text-3xl font-bold mb-4">Our Story</h3>
             <p className="text-sm lg:text-lg leading-relaxed">
               InjectIVF was founded by a close-knit group of women who deeply
               understood the stress and uncertainty of fertility treatments.
               After seeing loved ones go through IVF, we wanted to create a
-              service that would bring care directly to the comfort of patients&apos;
-              homes. Today, InjectIVF is all about providing compassionate,
-              reliable support for every step of your fertility journey.
+              service that would bring care directly to the comfort of
+              patients&apos; homes. Today, InjectIVF is all about providing
+              compassionate, reliable support for every step of your fertility
+              journey.
             </p>
-          </div>
+          </MotionDiv>
         </div>
 
-        <Metrics/>
+        <Metrics />
       </div>
     </section>
   );

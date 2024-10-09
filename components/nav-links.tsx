@@ -9,9 +9,9 @@ import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetContent,
-  // SheetDescription,
-  // SheetTitle,
   SheetTrigger,
+  SheetDescription,
+  SheetTitle,
 } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 
@@ -36,8 +36,9 @@ const sections = [
 
 type Props = {
   className?: string;
+  mobileIconClassName?: string;
 };
-export const NavLinks = ({ className }: Props) => {
+export const NavLinks = ({ className, mobileIconClassName }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const isMobile = useMedia("(max-width: 1024px)", false);
 
@@ -49,10 +50,8 @@ export const NavLinks = ({ className }: Props) => {
   if (isMobile) {
     return (
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
-        {/* <SheetTitle className="hidden">
-          title
-        </SheetTitle>
-        <SheetDescription className="hidden">Description</SheetDescription> */}
+        <SheetTitle className="hidden">title</SheetTitle>
+        <SheetDescription className="hidden">Description</SheetDescription>
         <SheetTrigger>
           <Button
             variant="outline"
@@ -61,7 +60,9 @@ export const NavLinks = ({ className }: Props) => {
             focus-visible:ring-transparent outline-none text-white focus:bg-white/30 transition"
             asChild
           >
-            <PiFlowerLotusLight className="size-10" />
+            <PiFlowerLotusLight
+              className={cn("size-12", mobileIconClassName)}
+            />
           </Button>
         </SheetTrigger>
         <SheetContent side="left" className="px-2">

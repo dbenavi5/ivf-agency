@@ -2,6 +2,7 @@ import { Ri24HoursFill } from "react-icons/ri";
 import { FaCheck } from "react-icons/fa";
 import { RiServiceFill } from "react-icons/ri";
 import { TbNurse } from "react-icons/tb";
+import { MotionDiv } from "./motion-div";
 
 export const Metrics = () => {
   const metrics = [
@@ -33,17 +34,20 @@ export const Metrics = () => {
 
   return (
     <div className="container mx-auto my-10">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+      <MotionDiv
+        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: 100 }}
+        transition={{ duration: 1, delay: 0.5 }}
+        className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center"
+      >
         {metrics.map((met) => (
           <div key={met.title} className="flex flex-col items-center">
-            <div className={`text-4xl ${met.iconColor}`}>
-              {met.icon}
-            </div>
+            <div className={`text-4xl ${met.iconColor}`}>{met.icon}</div>
             <p className="text-xl font-semibold mt-2">{met.number}</p>
             <p className="text-gray-500">{met.title}</p>
           </div>
         ))}
-      </div>
+      </MotionDiv>
     </div>
   );
 };

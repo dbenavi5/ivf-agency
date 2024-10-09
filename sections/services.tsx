@@ -1,3 +1,4 @@
+import { MotionDiv, MotionP } from "@/components/motion-div";
 import Image from "next/image";
 
 const URL_SERVICES =
@@ -10,13 +11,18 @@ export const Services = () => {
         <h2 className="text-3xl lg:text-4xl font-bold text-[#6260d9] flex items-center justify-center mb-16">
           Our Services
         </h2>
-        <p className="mb-10 text-sm lg:text-xl">
+        <MotionP
+          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 100 }}
+          transition={{ duration: 1, delay: 0.5 }}
+          className="mb-10 text-sm lg:text-xl"
+        >
           At InjectIVF, we provide personalized care to support you throughout
           your fertility journey. Whether you need professional injection
           administration, hands-on coaching to guide self-administration, or
           holistic wellness monitoring, our experienced nurses are here to help
           every step of the way.
-        </p>
+        </MotionP>
         <div className="relative flex flex-col md:flex-row justify-around pb-28 pt-10 mb-20 gap-y-8 md:gap-x-8">
           {/* First Div */}
           <div className="relative w-full h-[350px] md:w-[400px] md:h-[550px] bg-transparent rounded-md md:rounded-full overflow-hidden group transition-all duration-500 ease-in-out">
