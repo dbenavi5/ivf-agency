@@ -46,7 +46,11 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
     const section = document.querySelector(sectionId);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
-      history.replaceState(null, "", " ");
+
+      // Delay closing the sheet slightly to ensure the scroll finishes
+      setTimeout(() => {
+        history.replaceState(null, "", " ");
+      }, 300); // Adjust the delay if needed
     }
   };
 
@@ -83,7 +87,10 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
                   onClick={(e) => {
                     e.preventDefault();
                     scrollToSection(`#${section.id}`);
-                    closeNav(); // Close the nav sheet after scrolling
+                    // Delay closing the mobile nav to ensure scroll completes
+                    setTimeout(() => {
+                      closeNav();
+                    }, 300); // Adjust the delay if necessary
                   }}
                 >
                   {section.label}
