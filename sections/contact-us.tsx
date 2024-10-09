@@ -33,6 +33,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import ReCAPTCHA from "react-google-recaptcha";
+import Link from "next/link";
 
 export const ContactUs = () => {
   const [date, setDate] = useState<Date>();
@@ -46,12 +47,15 @@ export const ContactUs = () => {
     setCaptcha(token);
   };
 
-  if (state.succeeded) {
-    return toast({
-      variant: "success",
-      title: "Inquiry sent, thank you!",
-    });
-  }
+  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    handleSubmit(e);
+    if (state.succeeded) {
+      toast({
+        variant: "success",
+        title: "Inquiry sent, thank you!",
+      });
+    }
+  };
 
   return (
     <Card
@@ -68,7 +72,7 @@ export const ContactUs = () => {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleFormSubmit} className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="name">Your Full Name *</Label>
@@ -243,9 +247,12 @@ export const ContactUs = () => {
             />
             <Label htmlFor="terms" className="text-sm">
               I have read and agree to the{" "}
-              <a href="/" className="text-primary underline">
-                Terms and Conditions
-              </a>
+              <Link
+                href="/terms-and-privacy"
+                className="text-[#6260d9] underline"
+              >
+                Terms & Conditions
+              </Link>
             </Label>
           </div>
           <CardFooter className="flex flex-col gap-y-10">
@@ -266,7 +273,7 @@ export const ContactUs = () => {
                 Submit Inquiry
               </Button>
             ) : (
-              <Button variant="primaryBtn" disabled>
+              <Button type="button" variant="primaryBtn" disabled>
                 ReCAPTCHA before submitting
               </Button>
             )}

@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
 import { Phone, Mail } from "lucide-react";
 import Image from "next/image";
 import { FaYelp, FaInstagram } from "react-icons/fa6";
-import { useToast } from "@/hooks/use-toast"
+import { useToast } from "@/hooks/use-toast";
 
 const LOGO_URL =
   "https://res.cloudinary.com/dpj6rkbus/image/upload/v1728158238/ivf_logo_jlerxf.webp";
@@ -16,7 +16,7 @@ export const Footer = () => {
     toast({
       variant: "success",
       title: "Copied to clipboard",
-    })
+    });
   };
 
   return (
@@ -84,6 +84,12 @@ export const Footer = () => {
             &copy; {new Date().getFullYear()} InjectIVF, Concierge Services. All
             rights reserved.
           </p>
+          <a
+            href="/terms-and-privacy"
+            className="text-xs underline text-[#6260d9]"
+          >
+            Terms of Use & Privacy Policy
+          </a>
         </div>
       </div>
     </footer>
