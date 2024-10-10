@@ -1,9 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import { useState, useEffect } from "react";
 import { useMedia } from "react-use";
 import Link from "next/link";
-import { useRouter } from "next/navigation"; // Import useRouter
+import { useRouter } from "next/navigation";
 
 import { PiFlowerLotusLight } from "react-icons/pi";
 import { Button } from "@/components/ui/button";
@@ -31,32 +32,45 @@ type Props = {
 export const NavLinks = ({ className, mobileIconClassName }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const isMobile = useMedia("(max-width: 1024px)", false);
-  const router = useRouter(); // Initialize useRouter for navigation
+  const router = useRouter();
 
-  // Function to scroll smoothly to a section
+  // Function to scroll smoothly to a section and remove the hash fragment
   const scrollToSection = (sectionId: string) => {
     const section = document.querySelector(sectionId);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
-      // Use the router to remove the fragment from the URL
+
+      // Use router.replace to remove the hash after the scroll
       setTimeout(() => {
         router.replace(""); // Removes the fragment from the URL
-      }, 300); // Adjust the delay as needed
+      }, 300);
     }
   };
 
-  // Close the mobile navigation sheet after clicking a link
+  // Close the mobile navigation after a link is clicked
   const closeNav = () => {
     setIsOpen(false);
   };
 
-  // Scroll to the section based on URL hash changes
+  // Handle automatic scrolling when a URL hash is present
   useEffect(() => {
     const hash = window.location.hash;
     if (hash) {
       scrollToSection(hash);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Reapply scroll functionality when the Sheet is opened or URL is changed
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        scrollToSection(hash);
+      }
+    };
+
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
 
   if (isMobile) {
@@ -78,7 +92,7 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
           </Button>
         </SheetTrigger>
         <SheetContent side="left" className="px-2">
-          <nav className="flex flex-col gap-y-2 pt-6 ">
+          <nav className="flex flex-col gap-y-2 pt-6">
             {sections.map((section) => (
               <Button variant="secondary" key={section.id}>
                 <Link
@@ -88,7 +102,7 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
                   onClick={(e) => {
                     e.preventDefault();
                     scrollToSection(`#${section.id}`);
-                    closeNav();
+                    closeNav(); // Close after clicking
                   }}
                 >
                   {section.label}
