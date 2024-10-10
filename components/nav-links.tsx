@@ -12,6 +12,7 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 const sections = [
   {
@@ -46,11 +47,7 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
     const section = document.querySelector(sectionId);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
-
-      // Delay closing the sheet slightly to ensure the scroll finishes
-      setTimeout(() => {
-        history.replaceState(null, "", " ");
-      }, 300); // Adjust the delay if needed
+      history.replaceState(null, "", " ");
     }
   };
 
@@ -81,20 +78,17 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
           <nav className="flex flex-col gap-y-2 pt-6">
             {sections.map((section) => (
               <Button variant="secondary" key={section.id}>
-                <a
+                <Link
                   href={`#${section.id}`}
                   className="text-black font-semibold"
                   onClick={(e) => {
                     e.preventDefault();
                     scrollToSection(`#${section.id}`);
-                    // Delay closing the mobile nav to ensure scroll completes
-                    setTimeout(() => {
-                      closeNav();
-                    }, 300); // Adjust the delay if necessary
+                    closeNav(); // Close the nav sheet after scrolling
                   }}
                 >
                   {section.label}
-                </a>
+                </Link>
               </Button>
             ))}
           </nav>
@@ -106,7 +100,7 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
   return (
     <nav className="hidden lg:flex items-center justify-between gap-6">
       {sections.map((section) => (
-        <a
+        <Link
           key={section.label}
           href={`#${section.id}`}
           className={className}
@@ -116,7 +110,7 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
           }}
         >
           {section.label}
-        </a>
+        </Link>
       ))}
     </nav>
   );
