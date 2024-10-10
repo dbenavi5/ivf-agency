@@ -15,10 +15,10 @@ import {
 import { cn } from "@/lib/utils";
 
 const sections = [
-  { id: "about-us", label: "About Us" },
-  { id: "services", label: "Services" },
-  { id: "pricing", label: "Pricing" },
-  { id: "contact-us", label: "Contact Us" },
+  { id: "#about-us", label: "About Us" },
+  { id: "#services", label: "Services" },
+  { id: "#pricing", label: "Pricing" },
+  { id: "#contact-us", label: "Contact Us" },
 ];
 
 type Props = {
@@ -77,16 +77,34 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
           <SheetTitle className="hidden">title</SheetTitle>
           <SheetDescription className="hidden">Description</SheetDescription>
           <nav className="flex flex-col space-y-4 pt-6 ">
-            {sections.map((section) => (
-              <Button
-                key={section.id}
-                variant="secondary"
-                className="text-black font-semibold"
-                onClick={() => handleNavClick(`#${section.id}`)}
-              >
-                {section.label}
-              </Button>
-            ))}
+            <Link
+              href={"#about-us"}
+              className="text-black font-semibold"
+              onClick={closeNav}
+            >
+              About Us
+            </Link>
+            <Link
+              href={"#services"}
+              className="text-black font-semibold"
+              onClick={closeNav}
+            >
+              Services
+            </Link>
+            <Link
+              href={"#pricing"}
+              className="text-black font-semibold"
+              onClick={closeNav}
+            >
+              Pricing
+            </Link>
+            <Link
+              href={"#contact-us"}
+              className="text-black font-semibold"
+              onClick={closeNav}
+            >
+              Contact Us
+            </Link>
           </nav>
         </SheetContent>
       </Sheet>
@@ -102,7 +120,7 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
           className={className}
           onClick={(e) => {
             e.preventDefault();
-            scrollToSection(`#${section.id}`);
+            scrollToSection(`${section.id}`);
           }}
         >
           {section.label}
