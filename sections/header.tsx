@@ -62,23 +62,18 @@ export const Header = () => {
                 Concierge Services
               </motion.div>
             </Link>
-            <motion.div
-              initial={{ x: 100, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 1, delay: 0 }}
-            >
-              <NavLinks
-                className={cn(
-                  "hover:border-b-2 pb-2",
-                  isScrolled
-                    ? "text-black border-[#6260d9]"
-                    : "text-white border-[#c6d03a]"
-                )}
-                mobileIconClassName={
-                  isScrolled ? "fill-[#6260d9]" : "fill-[#ffffff]"
-                }
-              />
-            </motion.div>
+
+            <NavLinks
+              className={cn(
+                "hover:border-b-2 pb-2",
+                isScrolled
+                  ? "text-black border-[#6260d9]"
+                  : "text-white border-[#c6d03a]"
+              )}
+              mobileIconClassName={
+                isScrolled ? "fill-[#6260d9]" : "fill-[#ffffff]"
+              }
+            />
           </div>
         </div>
       </div>
