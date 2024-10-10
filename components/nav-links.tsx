@@ -30,15 +30,21 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const isMobile = useMedia("(max-width: 1024px)", false);
 
-  // Function to scroll smoothly to a section
+  // Function to scroll smoothly to a section using getElementById
   const scrollToSection = (sectionId: string) => {
-    const section = document.querySelector(sectionId);
+    const section = document.getElementById(sectionId.replace("#", ""));
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
     }
   };
 
-  // Close the mobile nav sheet after clicking a link
+  // Close the mobile nav sheet after clicking a link with a delay for scroll
+  const handleNavClick = (sectionId: string) => {
+    closeNav(); // Close the sheet first
+    setTimeout(() => scrollToSection(sectionId), 100); // Add a small delay to ensure the scroll occurs after the sheet closes
+  };
+
+  // Close the sheet
   const closeNav = () => {
     setIsOpen(false);
   };
@@ -80,10 +86,7 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
                 key={section.id}
                 variant="secondary"
                 className="text-black font-semibold"
-                onClick={() => {
-                  scrollToSection(`#${section.id}`);
-                  closeNav(); // Close the nav after clicking the button
-                }}
+                onClick={() => handleNavClick(`#${section.id}`)}
               >
                 {section.label}
               </Button>
