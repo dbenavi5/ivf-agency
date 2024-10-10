@@ -54,7 +54,7 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
   if (isMobile) {
     return (
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
-        <SheetTrigger asChild>
+        <SheetTrigger>
           <Button
             variant="outline"
             size="sm"
@@ -72,18 +72,16 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
           <SheetDescription className="hidden">Description</SheetDescription>
           <nav className="flex flex-col space-y-4 pt-6 ">
             {sections.map((section) => (
-              <Button variant="secondary" key={section.id}>
-                <a
-                  href={`#${section.id}`}
-                  className="text-black font-semibold"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection(`#${section.id}`);
-                    closeNav(); // Close the nav after clicking the link
-                  }}
-                >
-                  {section.label}
-                </a>
+              <Button
+                key={section.id}
+                variant="secondary"
+                className="text-black font-semibold"
+                onClick={() => {
+                  scrollToSection(`#${section.id}`);
+                  closeNav(); // Close the nav after clicking the button
+                }}
+              >
+                {section.label}
               </Button>
             ))}
           </nav>
