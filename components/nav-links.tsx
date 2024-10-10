@@ -81,11 +81,7 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
                 key={section.name}
                 href={`#${section.name}`}
                 className="text-black font-semibold"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection(`#${section.name}`);
-                  closeNav(); // Close the nav after scroll on mobile
-                }}
+                onClick={closeNav}
               >
                 {section.label}
               </a>
