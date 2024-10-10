@@ -77,9 +77,9 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
         <SheetContent side="left" className="px-2">
           <nav className="flex flex-col gap-y-2 pt-6 ">
             {sections.map((section) => (
-              <Link
+              <Button
                 key={section.name}
-                href={`#${section.name}`}
+                variant='secondary'
                 className="text-black font-semibold"
                 onClick={(e) => {
                   e.preventDefault();
@@ -87,10 +87,8 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
                   closeNav(); // Close the nav after scroll on mobile
                 }}
               >
-                <Button variant="secondary" className="w-full">
-                  {section.label}
-                </Button>
-              </Link>
+                {section.label}
+              </Button>
             ))}
           </nav>
         </SheetContent>
