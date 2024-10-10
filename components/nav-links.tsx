@@ -77,7 +77,19 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
         </SheetTrigger>
         <SheetContent side="left" className="px-2">
           <nav className="flex flex-col gap-y-2 pt-6">
-            {sections.map((section) => (
+            <a href="#about-us" onClick={closeNav}>
+              About Us
+            </a>
+            <a href="#services" onClick={closeNav}>
+              Services
+            </a>
+            <a href="#pricing" onClick={closeNav}>
+              Pricing
+            </a>
+            <a href="#contact-us" onClick={closeNav}>
+              Contact Us
+            </a>
+            {/* {sections.map((section) => (
               <Button variant="secondary" key={section.id}>
                 <a
                   href={`#${section.id}`}
@@ -91,7 +103,7 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
                   {section.label}
                 </a>
               </Button>
-            ))}
+            ))} */}
           </nav>
         </SheetContent>
       </Sheet>
