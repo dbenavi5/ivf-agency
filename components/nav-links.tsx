@@ -1,8 +1,8 @@
-"use client";
-
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import { useMedia } from "react-use";
 import Link from "next/link";
+
 import { PiFlowerLotusLight } from "react-icons/pi";
 import { Button } from "@/components/ui/button";
 import {
@@ -15,22 +15,10 @@ import {
 import { cn } from "@/lib/utils";
 
 const sections = [
-  {
-    id: "about-us",
-    label: "About Us",
-  },
-  {
-    id: "services",
-    label: "Services",
-  },
-  {
-    id: "pricing",
-    label: "Pricing",
-  },
-  {
-    id: "contact-us",
-    label: "Contact Us",
-  },
+  { id: "about-us", label: "About Us" },
+  { id: "services", label: "Services" },
+  { id: "pricing", label: "Pricing" },
+  { id: "contact-us", label: "Contact Us" },
 ];
 
 type Props = {
@@ -41,21 +29,29 @@ type Props = {
 export const NavLinks = ({ className, mobileIconClassName }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const isMobile = useMedia("(max-width: 1024px)", false);
+  const router = useRouter();
 
-  // Function to scroll smoothly to a section and remove the fragment from the URL
+  // Scroll to section logic with URL fragment handling
   const scrollToSection = (sectionId: string) => {
     const section = document.querySelector(sectionId);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
-      // Remove the URL fragment after scrolling
-      history.replaceState(null, "", window.location.pathname);
+      history.replaceState(null, "", " "); // Clean the URL
     }
   };
 
-  // Function to close the mobile nav sheet when a link is clicked
+  // Close the sheet when a link is clicked
   const closeNav = () => {
     setIsOpen(false);
   };
+
+  // Handle scrolling based on URL hash changes
+  useEffect(() => {
+    if (router.asPath.includes("#")) {
+      const sectionId = router.asPath.split("#")[1];
+      scrollToSection(`#${sectionId}`);
+    }
+  }, [router.asPath]);
 
   if (isMobile) {
     return (
@@ -76,34 +72,22 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
           </Button>
         </SheetTrigger>
         <SheetContent side="left" className="px-2">
-          <nav className="flex flex-col gap-y-2 pt-6">
-            <a href="#about-us" onClick={closeNav}>
-              About Us
-            </a>
-            <a href="#services" onClick={closeNav}>
-              Services
-            </a>
-            <a href="#pricing" onClick={closeNav}>
-              Pricing
-            </a>
-            <a href="#contact-us" onClick={closeNav}>
-              Contact Us
-            </a>
-            {/* {sections.map((section) => (
+          <nav className="flex flex-col gap-y-2 pt-6 ">
+            {sections.map((section) => (
               <Button variant="secondary" key={section.id}>
-                <a
+                <Link
+                  key={section.label}
                   href={`#${section.id}`}
                   className="text-black font-semibold"
-                  onClick={(e) => {
-                    e.preventDefault();
+                  onClick={() => {
                     scrollToSection(`#${section.id}`);
-                    closeNav(); // Close the nav after scroll on mobile
+                    closeNav();
                   }}
                 >
                   {section.label}
-                </a>
+                </Link>
               </Button>
-            ))} */}
+            ))}
           </nav>
         </SheetContent>
       </Sheet>
@@ -113,7 +97,7 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
   return (
     <nav className="hidden lg:flex items-center justify-between gap-6">
       {sections.map((section) => (
-        <a
+        <Link
           key={section.label}
           href={`#${section.id}`}
           className={className}
@@ -123,7 +107,7 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
           }}
         >
           {section.label}
-        </a>
+        </Link>
       ))}
     </nav>
   );
