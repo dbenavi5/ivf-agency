@@ -36,16 +36,18 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
 
   // Function to scroll smoothly to a section and remove the hash fragment
   const scrollToSection = (sectionId: string) => {
+    console.log(`Scrolling to: ${sectionId}`); // Log the section ID
     const section = document.querySelector(sectionId);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
-
-      // Use router.replace to remove the hash after the scroll
       setTimeout(() => {
         router.replace(""); // Removes the fragment from the URL
       }, 300);
+    } else {
+      console.error(`Section not found: ${sectionId}`); // Log if section is not found
     }
   };
+  
 
   // Close the mobile navigation after a link is clicked
   const closeNav = () => {
@@ -100,9 +102,9 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
                   href={`#${section.id}`}
                   className="text-black font-semibold"
                   onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection(`#${section.id}`);
-                    closeNav(); // Close after clicking
+                    e.preventDefault(); // Prevent default link behavior
+                    closeNav(); // Close the mobile navigation
+                    setTimeout(() => scrollToSection(`#${section.id}`), 300); // Scroll after closing
                   }}
                 >
                   {section.label}
