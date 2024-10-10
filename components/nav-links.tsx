@@ -1,9 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useMedia } from "react-use";
 import Link from "next/link";
-
 import { PiFlowerLotusLight } from "react-icons/pi";
 import { Button } from "@/components/ui/button";
 import {
@@ -16,36 +15,41 @@ import {
 import { cn } from "@/lib/utils";
 
 const sections = [
-  {
-    id: "about-us",
-    label: "About Us",
-  },
-  {
-    id: "services",
-    label: "Services",
-  },
-  {
-    id: "pricing",
-    label: "Pricing",
-  },
-  {
-    id: "contact-us",
-    label: "Contact Us",
-  },
+  { id: "about-us", label: "About Us" },
+  { id: "services", label: "Services" },
+  { id: "pricing", label: "Pricing" },
+  { id: "contact-us", label: "Contact Us" },
 ];
 
 type Props = {
   className?: string;
   mobileIconClassName?: string;
 };
+
 export const NavLinks = ({ className, mobileIconClassName }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const isMobile = useMedia("(max-width: 1024px)", false);
 
-  // Function to close the mobile nav sheet when a link is clicked
+  // Function to scroll smoothly to a section
+  const scrollToSection = (sectionId: string) => {
+    const section = document.querySelector(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  // Close the mobile nav sheet after clicking a link
   const closeNav = () => {
     setIsOpen(false);
   };
+
+  // Handle hash changes on page load or if the URL is updated manually
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      scrollToSection(hash);
+    }
+  }, []);
 
   if (isMobile) {
     return (
@@ -69,14 +73,17 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
           <nav className="flex flex-col gap-y-2 pt-6 ">
             {sections.map((section) => (
               <Button variant="secondary" key={section.id}>
-                <Link
-                  key={section.label}
+                <a
                   href={`#${section.id}`}
                   className="text-black font-semibold"
-                  onClick={closeNav} // Close nav on click
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection(`#${section.id}`);
+                    closeNav(); // Close the nav after clicking the link
+                  }}
                 >
                   {section.label}
-                </Link>
+                </a>
               </Button>
             ))}
           </nav>
@@ -88,9 +95,17 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
   return (
     <nav className="hidden lg:flex items-center justify-between gap-6">
       {sections.map((section) => (
-        <Link key={section.label} href={`#${section.id}`} className={className}>
+        <a
+          key={section.label}
+          href={`#${section.id}`}
+          className={className}
+          onClick={(e) => {
+            e.preventDefault();
+            scrollToSection(`#${section.id}`);
+          }}
+        >
           {section.label}
-        </Link>
+        </a>
       ))}
     </nav>
   );
