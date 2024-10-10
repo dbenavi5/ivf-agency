@@ -17,19 +17,19 @@ import { cn } from "@/lib/utils";
 
 const sections = [
   {
-    id: "about-us",
+    name: "about-us",
     label: "About Us",
   },
   {
-    id: "services",
+    name: "services",
     label: "Services",
   },
   {
-    id: "pricing",
+    name: "pricing",
     label: "Pricing",
   },
   {
-    id: "contact-us",
+    name: "contact-us",
     label: "Contact Us",
   },
 ];
@@ -41,6 +41,15 @@ type Props = {
 export const NavLinks = ({ className, mobileIconClassName }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const isMobile = useMedia("(max-width: 1024px)", false);
+
+  const scrollToSection = (sectionId: string) => {
+    const section = document.querySelector(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+      // Remove the URL fragment after scrolling
+      history.replaceState(null, "", window.location.pathname);
+    }
+  };
 
   // Function to close the mobile nav sheet when a link is clicked
   const closeNav = () => {
@@ -68,16 +77,20 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
         <SheetContent side="left" className="px-2">
           <nav className="flex flex-col gap-y-2 pt-6 ">
             {sections.map((section) => (
-              <Button variant="secondary" key={section.id}>
-                <Link
-                  key={section.label}
-                  href={`#${section.id}`}
-                  className="text-black font-semibold"
-                  onClick={closeNav} // Close nav on click
-                >
+              <Link
+                key={section.name}
+                href={`#${section.name}`}
+                className="text-black font-semibold"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(`#${section.name}`);
+                  closeNav(); // Close the nav after scroll on mobile
+                }}
+              >
+                <Button variant="secondary" className="w-full">
                   {section.label}
-                </Link>
-              </Button>
+                </Button>
+              </Link>
             ))}
           </nav>
         </SheetContent>
@@ -88,7 +101,15 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
   return (
     <nav className="hidden lg:flex items-center justify-between gap-6">
       {sections.map((section) => (
-        <Link key={section.label} href={`#${section.id}`} className={className}>
+        <Link
+          key={section.label}
+          href={`#${section.name}`}
+          className={className}
+          onClick={(e) => {
+            e.preventDefault();
+            scrollToSection(`#${section.name}`);
+          }}
+        >
           {section.label}
         </Link>
       ))}
