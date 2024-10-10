@@ -1,10 +1,8 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useMedia } from "react-use";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 import { PiFlowerLotusLight } from "react-icons/pi";
 import { Button } from "@/components/ui/button";
@@ -18,62 +16,36 @@ import {
 import { cn } from "@/lib/utils";
 
 const sections = [
-  { id: "about-us", label: "About Us" },
-  { id: "services", label: "Services" },
-  { id: "pricing", label: "Pricing" },
-  { id: "contact-us", label: "Contact Us" },
+  {
+    id: "about-us",
+    label: "About Us",
+  },
+  {
+    id: "services",
+    label: "Services",
+  },
+  {
+    id: "pricing",
+    label: "Pricing",
+  },
+  {
+    id: "contact-us",
+    label: "Contact Us",
+  },
 ];
 
 type Props = {
   className?: string;
   mobileIconClassName?: string;
 };
-
 export const NavLinks = ({ className, mobileIconClassName }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const isMobile = useMedia("(max-width: 1024px)", false);
-  const router = useRouter();
 
-  // Function to scroll smoothly to a section and remove the hash fragment
-  const scrollToSection = (sectionId: string) => {
-    console.log(`Scrolling to: ${sectionId}`); // Log the section ID
-    const section = document.querySelector(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-      setTimeout(() => {
-        router.replace(""); // Removes the fragment from the URL
-      }, 300);
-    } else {
-      console.error(`Section not found: ${sectionId}`); // Log if section is not found
-    }
-  };
-  
-
-  // Close the mobile navigation after a link is clicked
+  // Function to close the mobile nav sheet when a link is clicked
   const closeNav = () => {
     setIsOpen(false);
   };
-
-  // Handle automatic scrolling when a URL hash is present
-  useEffect(() => {
-    const hash = window.location.hash;
-    if (hash) {
-      scrollToSection(hash);
-    }
-  }, []);
-
-  // Reapply scroll functionality when the Sheet is opened or URL is changed
-  useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash;
-      if (hash) {
-        scrollToSection(hash);
-      }
-    };
-
-    window.addEventListener("hashchange", handleHashChange);
-    return () => window.removeEventListener("hashchange", handleHashChange);
-  }, []);
 
   if (isMobile) {
     return (
@@ -94,18 +66,14 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
           </Button>
         </SheetTrigger>
         <SheetContent side="left" className="px-2">
-          <nav className="flex flex-col gap-y-2 pt-6">
+          <nav className="flex flex-col gap-y-2 pt-6 ">
             {sections.map((section) => (
               <Button variant="secondary" key={section.id}>
                 <Link
                   key={section.label}
                   href={`#${section.id}`}
                   className="text-black font-semibold"
-                  onClick={(e) => {
-                    e.preventDefault(); // Prevent default link behavior
-                    closeNav(); // Close the mobile navigation
-                    setTimeout(() => scrollToSection(`#${section.id}`), 300); // Scroll after closing
-                  }}
+                  onClick={closeNav} // Close nav on click
                 >
                   {section.label}
                 </Link>
@@ -120,15 +88,7 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
   return (
     <nav className="hidden lg:flex items-center justify-between gap-6">
       {sections.map((section) => (
-        <Link
-          key={section.label}
-          href={`#${section.id}`}
-          className={className}
-          onClick={(e) => {
-            e.preventDefault();
-            scrollToSection(`#${section.id}`);
-          }}
-        >
+        <Link key={section.label} href={`#${section.id}`} className={className}>
           {section.label}
         </Link>
       ))}
