@@ -67,7 +67,11 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
             />
           </Button>
         </SheetTrigger>
-        <SheetContent side="left" className="px-2">
+        <SheetContent
+          side="left"
+          className="px-2"
+          onCloseAutoFocus={(e) => e.preventDefault()}
+        >
           <SheetTitle className="hidden">title</SheetTitle>
           <SheetDescription className="hidden">Description</SheetDescription>
           <nav className="flex flex-col space-y-4 pt-6 ">
