@@ -82,8 +82,7 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
                 variant="secondary"
                 className="text-black font-semibold"
               >
-                <Link
-                  key={section.label}
+                <a
                   href={`#${section.name}`}
                   onClick={(e) => {
                     e.preventDefault();
@@ -92,7 +91,7 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
                   }}
                 >
                   {section.label}
-                </Link>
+                </a>
               </Button>
             ))}
           </nav>
@@ -104,7 +103,7 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
   return (
     <nav className="hidden lg:flex items-center justify-between gap-6">
       {sections.map((section) => (
-        <Link
+        <a
           key={section.label}
           href={`#${section.name}`}
           className={className}
@@ -114,7 +113,7 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
           }}
         >
           {section.label}
-        </Link>
+        </a>
       ))}
     </nav>
   );
