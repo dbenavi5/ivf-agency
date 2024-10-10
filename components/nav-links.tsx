@@ -2,9 +2,6 @@
 
 import { useState } from "react";
 import { useMedia } from "react-use";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-
 import { PiFlowerLotusLight } from "react-icons/pi";
 import { Button } from "@/components/ui/button";
 import {
@@ -43,12 +40,16 @@ type Props = {
 export const NavLinks = ({ className, mobileIconClassName }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const isMobile = useMedia("(max-width: 1024px)", false);
-  const router = useRouter(); // Using useRouter for navigation
 
-  // Function to handle navigation and close the sheet
+  // Function to handle navigation and smooth scrolling
   const handleNavigation = (sectionId: string) => {
     setIsOpen(false); // Close the nav sheet
-    router.push(`#${sectionId}`); // Navigate to the desired section
+
+    // Find the target element and scroll to it
+    const targetElement = document.getElementById(sectionId);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   };
 
   if (isMobile) {
@@ -89,9 +90,17 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
   return (
     <nav className="hidden lg:flex items-center justify-between gap-6">
       {sections.map((section) => (
-        <Link key={section.label} href={`#${section.id}`} className={className}>
+        <a
+          key={section.label}
+          href={`#${section.id}`}
+          className={className}
+          onClick={(e) => {
+            e.preventDefault();
+            handleNavigation(section.id);
+          }}
+        >
           {section.label}
-        </Link>
+        </a>
       ))}
     </nav>
   );
