@@ -83,7 +83,7 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
                   className="text-black font-semibold"
                   onClick={(e) => {
                     e.preventDefault();
-                    scrollToSection(`#${section.id}`);
+                    // scrollToSection(`#${section.id}`);
                     closeNav(); // Close the nav sheet after scrolling
                   }}
                 >
