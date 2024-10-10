@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
+"use client";
+
+import { useState, useEffect } from "react";
 import { useMedia } from "react-use";
 import Link from "next/link";
+import { useRouter } from "next/navigation"; // Import useRouter
 
 import { PiFlowerLotusLight } from "react-icons/pi";
 import { Button } from "@/components/ui/button";
@@ -29,29 +31,33 @@ type Props = {
 export const NavLinks = ({ className, mobileIconClassName }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const isMobile = useMedia("(max-width: 1024px)", false);
-  const router = useRouter();
+  const router = useRouter(); // Initialize useRouter for navigation
 
-  // Scroll to section logic with URL fragment handling
+  // Function to scroll smoothly to a section
   const scrollToSection = (sectionId: string) => {
     const section = document.querySelector(sectionId);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
-      history.replaceState(null, "", " "); // Clean the URL
+      // Use the router to remove the fragment from the URL
+      setTimeout(() => {
+        router.replace(""); // Removes the fragment from the URL
+      }, 300); // Adjust the delay as needed
     }
   };
 
-  // Close the sheet when a link is clicked
+  // Close the mobile navigation sheet after clicking a link
   const closeNav = () => {
     setIsOpen(false);
   };
 
-  // Handle scrolling based on URL hash changes
+  // Scroll to the section based on URL hash changes
   useEffect(() => {
-    if (router.asPath.includes("#")) {
-      const sectionId = router.asPath.split("#")[1];
-      scrollToSection(`#${sectionId}`);
+    const hash = window.location.hash;
+    if (hash) {
+      scrollToSection(hash);
     }
-  }, [router.asPath]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (isMobile) {
     return (
@@ -79,7 +85,8 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
                   key={section.label}
                   href={`#${section.id}`}
                   className="text-black font-semibold"
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.preventDefault();
                     scrollToSection(`#${section.id}`);
                     closeNav();
                   }}
