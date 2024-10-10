@@ -12,7 +12,6 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
 
 const sections = [
   {
@@ -47,7 +46,8 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
     const section = document.querySelector(sectionId);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
-      history.replaceState(null, "", " ");
+      // Remove the URL fragment
+      history.replaceState(null, "", window.location.pathname);
     }
   };
 
@@ -78,17 +78,17 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
           <nav className="flex flex-col gap-y-2 pt-6">
             {sections.map((section) => (
               <Button variant="secondary" key={section.id}>
-                <Link
+                <a
                   href={`#${section.id}`}
                   className="text-black font-semibold"
                   onClick={(e) => {
                     e.preventDefault();
-                    // scrollToSection(`#${section.id}`);
-                    closeNav(); // Close the nav sheet after scrolling
+                    scrollToSection(`#${section.id}`);
+                    closeNav(); // Close the mobile nav after scroll
                   }}
                 >
                   {section.label}
-                </Link>
+                </a>
               </Button>
             ))}
           </nav>
@@ -100,7 +100,7 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
   return (
     <nav className="hidden lg:flex items-center justify-between gap-6">
       {sections.map((section) => (
-        <Link
+        <a
           key={section.label}
           href={`#${section.id}`}
           className={className}
@@ -110,7 +110,7 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
           }}
         >
           {section.label}
-        </Link>
+        </a>
       ))}
     </nav>
   );
