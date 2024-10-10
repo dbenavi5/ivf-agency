@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { useMedia } from "react-use";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 import { PiFlowerLotusLight } from "react-icons/pi";
 import { Button } from "@/components/ui/button";
@@ -43,15 +43,12 @@ type Props = {
 export const NavLinks = ({ className, mobileIconClassName }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const isMobile = useMedia("(max-width: 1024px)", false);
-  const router = useRouter();
+  const router = useRouter(); // Using useRouter for navigation
 
-  // Function to close the mobile nav sheet and navigate to the section
-  const handleLinkClick = (sectionId: string) => {
+  // Function to handle navigation and close the sheet
+  const handleNavigation = (sectionId: string) => {
     setIsOpen(false); // Close the nav sheet
-    // Using setTimeout to ensure the sheet closes before navigation occurs
-    setTimeout(() => {
-      router.push(`#${sectionId}`); // Navigates to the section
-    }, 100);
+    router.push(`#${sectionId}`); // Navigate to the desired section
   };
 
   if (isMobile) {
@@ -73,16 +70,14 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
           </Button>
         </SheetTrigger>
         <SheetContent side="left" className="px-2">
-          <nav className="flex flex-col gap-y-2 pt-6">
+          <nav className="flex flex-col gap-y-2 pt-6 ">
             {sections.map((section) => (
               <Button
                 variant="secondary"
                 key={section.id}
-                onClick={() => handleLinkClick(section.id)}
+                onClick={() => handleNavigation(section.id)} // Handle navigation on click
               >
-                <span className="text-black font-semibold">
-                  {section.label}
-                </span>
+                {section.label}
               </Button>
             ))}
           </nav>
