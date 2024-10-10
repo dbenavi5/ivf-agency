@@ -77,9 +77,9 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
         <SheetContent side="left" className="px-2">
           <nav className="flex flex-col gap-y-2 pt-6 ">
             {sections.map((section) => (
-              <Button
+              <a
                 key={section.name}
-                variant="secondary"
+                href={`#${section.name}`}
                 className="text-black font-semibold"
                 onClick={(e) => {
                   e.preventDefault();
@@ -88,7 +88,7 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
                 }}
               >
                 {section.label}
-              </Button>
+              </a>
             ))}
           </nav>
         </SheetContent>
@@ -100,7 +100,7 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
     <nav className="hidden lg:flex items-center justify-between gap-6">
       {sections.map((section) => (
         <a
-          key={section.label}
+          key={section.name}
           href={`#${section.name}`}
           className={className}
           onClick={(e) => {
