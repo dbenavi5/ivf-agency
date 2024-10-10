@@ -54,9 +54,7 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
   if (isMobile) {
     return (
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
-        <SheetTitle className="hidden">title</SheetTitle>
-        <SheetDescription className="hidden">Description</SheetDescription>
-        <SheetTrigger>
+        <SheetTrigger asChild>
           <Button
             variant="outline"
             size="sm"
@@ -70,7 +68,9 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
           </Button>
         </SheetTrigger>
         <SheetContent side="left" className="px-2">
-          <nav className="flex flex-col gap-y-2 pt-6 ">
+          <SheetTitle className="hidden">title</SheetTitle>
+          <SheetDescription className="hidden">Description</SheetDescription>
+          <nav className="flex flex-col space-y-4 pt-6 ">
             {sections.map((section) => (
               <Button variant="secondary" key={section.id}>
                 <a
