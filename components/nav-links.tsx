@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useMedia } from "react-use";
 import Link from "next/link";
-
 import { PiFlowerLotusLight } from "react-icons/pi";
 import { Button } from "@/components/ui/button";
 import {
@@ -17,19 +16,19 @@ import { cn } from "@/lib/utils";
 
 const sections = [
   {
-    name: "about-us",
+    id: "about-us",
     label: "About Us",
   },
   {
-    name: "services",
+    id: "services",
     label: "Services",
   },
   {
-    name: "pricing",
+    id: "pricing",
     label: "Pricing",
   },
   {
-    name: "contact-us",
+    id: "contact-us",
     label: "Contact Us",
   },
 ];
@@ -38,10 +37,12 @@ type Props = {
   className?: string;
   mobileIconClassName?: string;
 };
+
 export const NavLinks = ({ className, mobileIconClassName }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const isMobile = useMedia("(max-width: 1024px)", false);
 
+  // Function to scroll smoothly to a section and remove the fragment from the URL
   const scrollToSection = (sectionId: string) => {
     const section = document.querySelector(sectionId);
     if (section) {
@@ -75,16 +76,21 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
           </Button>
         </SheetTrigger>
         <SheetContent side="left" className="px-2">
-          <nav className="flex flex-col gap-y-2 pt-6 ">
+          <nav className="flex flex-col gap-y-2 pt-6">
             {sections.map((section) => (
-              <a
-                key={section.name}
-                href={`#${section.name}`}
-                className="text-black font-semibold"
-                onClick={closeNav}
-              >
-                {section.label}
-              </a>
+              <Button variant="secondary" key={section.id}>
+                <a
+                  href={`#${section.id}`}
+                  className="text-black font-semibold"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection(`#${section.id}`);
+                    closeNav(); // Close the nav after scroll on mobile
+                  }}
+                >
+                  {section.label}
+                </a>
+              </Button>
             ))}
           </nav>
         </SheetContent>
@@ -96,12 +102,12 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
     <nav className="hidden lg:flex items-center justify-between gap-6">
       {sections.map((section) => (
         <a
-          key={section.name}
-          href={`#${section.name}`}
+          key={section.label}
+          href={`#${section.id}`}
           className={className}
           onClick={(e) => {
             e.preventDefault();
-            scrollToSection(`#${section.name}`);
+            scrollToSection(`#${section.id}`);
           }}
         >
           {section.label}
