@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { useMedia } from "react-use";
+import Link from "next/link";
+
 import { PiFlowerLotusLight } from "react-icons/pi";
 import { Button } from "@/components/ui/button";
 import {
@@ -36,20 +38,13 @@ type Props = {
   className?: string;
   mobileIconClassName?: string;
 };
-
 export const NavLinks = ({ className, mobileIconClassName }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const isMobile = useMedia("(max-width: 1024px)", false);
 
-  // Function to handle navigation and smooth scrolling
-  const handleNavigation = (sectionId: string) => {
-    setIsOpen(false); // Close the nav sheet
-
-    // Find the target element and scroll to it
-    const targetElement = document.getElementById(sectionId);
-    if (targetElement) {
-      targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
+  // Function to close the mobile nav sheet when a link is clicked
+  const closeNav = () => {
+    setIsOpen(false);
   };
 
   if (isMobile) {
@@ -73,12 +68,15 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
         <SheetContent side="left" className="px-2">
           <nav className="flex flex-col gap-y-2 pt-6 ">
             {sections.map((section) => (
-              <Button
-                variant="secondary"
-                key={section.id}
-                onClick={() => handleNavigation(section.id)} // Handle navigation on click
-              >
-                {section.label}
+              <Button variant="secondary" key={section.id}>
+                <Link
+                  key={section.label}
+                  href={`#${section.id}`}
+                  className="text-black font-semibold"
+                  onClick={closeNav} // Close nav on click
+                >
+                  {section.label}
+                </Link>
               </Button>
             ))}
           </nav>
@@ -90,17 +88,9 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
   return (
     <nav className="hidden lg:flex items-center justify-between gap-6">
       {sections.map((section) => (
-        <a
-          key={section.label}
-          href={`#${section.id}`}
-          className={className}
-          onClick={(e) => {
-            e.preventDefault();
-            handleNavigation(section.id);
-          }}
-        >
+        <Link key={section.label} href={`#${section.id}`} className={className}>
           {section.label}
-        </a>
+        </Link>
       ))}
     </nav>
   );
