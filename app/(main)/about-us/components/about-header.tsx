@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { IoMdArrowRoundBack } from "react-icons/io";
 
-export const LegalHeader = () => {
+export const AboutHeader = () => {
   const router = useRouter();
 
   return (
@@ -25,7 +25,7 @@ export const LegalHeader = () => {
                 variant="outline"
                 size="sm"
                 onClick={() => router.back()}
-                className="font-normal bg-white/10 hover:bg-white/20 border-none focus-visible:ring-offset-0 
+                className="font-normal bg-white/10 hover:bg-white/20  border-none focus-visible:ring-offset-0 
             focus-visible:ring-transparent outline-none focus:bg-white/30 transition flex items-center justify-center"
               >
                 <IoMdArrowRoundBack className="size-4 m-2" />

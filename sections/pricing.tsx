@@ -6,12 +6,12 @@ import { LiaSuperpowers } from "react-icons/lia";
 export const Pricing = () => {
   return (
     <section id="pricing" className="relative mb-24 scroll-mt-20">
-      <h2 className="text-3xl lg:text-4xl font-bold text-[#6260d9] flex items-center justify-center mb-6 lg:mb-12">
+      <h2 className="text-3xl lg:text-4xl font-bold text-[#d5415a] flex items-center justify-center mb-6 lg:mb-12">
         Pricing
       </h2>
       <div className="container mx-auto">
         {/* Background with gradient */}
-        <div className="relative w-full max-w-4xl mx-auto p-8 rounded-[30px] bg-[#87c1e2]/20 overflow-hidden">
+        <div className="relative w-full max-w-4xl mx-auto p-8 rounded-[30px] bg-[#fcd0d8]/10 overflow-hidden">
           <h3 className="flex items-center justify-center  mb-6 font-semibold text-xl">
             Choose an Option:
           </h3>
@@ -20,7 +20,7 @@ export const Pricing = () => {
             {/* Pricing Card 1 */}
             <div className="bg-white bg-opacity-10 text-center p-6 rounded-lg shadow-md transition-transform transform hover:scale-105 hover:bg-opacity-20">
               <div className="flex items-center justify-center">
-                <FaSyringe className="text-4xl text-[#6260d9] mb-4" />
+                <FaSyringe className="text-4xl text-[#d5415a] mb-4" />
               </div>
 
               <h3 className="text-lg font-bold">
@@ -32,7 +32,7 @@ export const Pricing = () => {
             {/* Pricing Card 2 */}
             <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md transition-transform transform hover:scale-105 hover:bg-opacity-20">
               <div className="flex items-center justify-center">
-                <LiaSuperpowers className="text-4xl text-[#6260d9] mb-4" />
+                <LiaSuperpowers className="text-4xl text-[#d5415a] mb-4" />
               </div>
               <h3 className="text-lg font-bold">
                 Trigger Shot Only
@@ -43,7 +43,7 @@ export const Pricing = () => {
             {/* Pricing Card 3 */}
             <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md transition-transform transform hover:scale-105 hover:bg-opacity-20">
               <div className="flex items-center justify-center">
-                <FaUserMd className="text-4xl text-[#6260d9] mb-4" />
+                <FaUserMd className="text-4xl text-[#d5415a] mb-4" />
               </div>
               <h3 className="text-lg font-bold">Coaching Session</h3>
               <p className="text-xl font-semibold mt-2">$175</p>
@@ -52,7 +52,7 @@ export const Pricing = () => {
             {/* Pricing Card 4 */}
             <div className="bg-white bg-opacity-10 p-6 rounded-lg shadow-md transition-transform transform hover:scale-105 hover:bg-opacity-20">
               <div className="flex items-center justify-center">
-                <MdOutlineAddLocation className="text-4xl text-[#6260d9] mb-4" />
+                <MdOutlineAddLocation className="text-4xl text-[#d5415a] mb-4" />
               </div>
               <h3 className="text-lg font-bold">
                 Daily Injections, 2 Visits a Day

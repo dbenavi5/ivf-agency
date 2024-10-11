@@ -28,10 +28,10 @@ export const Hero = () => {
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 1, delay: 0.5 }}
           >
-            <h1 className="text-4xl lg:text-5xl font-bold tracking-tighter bg-gradient-to-r from-[#c6d03a] to-[#d6e388] text-transparent bg-clip-text mt-60 z-10">
+            <h1 className="text-4xl lg:text-5xl font-bold tracking-tighter bg-gradient-to-b from-[#f4acb7] via-[#ffcad4] to-[#f4d0d0] text-transparent bg-clip-text mt-60 z-10">
               Your Path to Parenthood Starts Here
             </h1>
-            <p className="text-md lg:text-xl text-[#fbfcf1] tracking-tight mt-6 lg:mt-10 z-10">
+            <p className="text-md lg:text-xl text-[#fce7ea] tracking-tight mt-6 lg:mt-10 z-10">
               Experience the comfort and care of InjectIVF, a female-owned
               business offering reliable fertility injection services right at
               home. With compassionate support, we’re here to make managing your

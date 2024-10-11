@@ -46,21 +46,22 @@ export const ContactUs = () => {
   };
 
   if (state.succeeded) {
-  
     return (
       <div className="container w-96">
-        <p className="w-full text-center border border-[#c6d03a] p-4 rounded-md">Thank you for your inquiry!</p>
+        <p className="w-full text-center border border-[#d5415a] p-4 rounded-md">
+          Thank you for your inquiry!
+        </p>
       </div>
-    )
+    );
   }
 
   return (
     <Card
       id="contact-us"
-      className="w-full max-w-2xl mx-auto my-20 scroll-mt-20"
+      className="max-w-2xl my-20 mx-4 md:mx-auto lg:mx-auto scroll-mt-20"
     >
       <CardHeader>
-        <CardTitle className="text-center text-[#6260d9]">
+        <CardTitle className="text-center text-[#d5415a]">
           IVF Concierge Service Inquiry
         </CardTitle>
         <CardDescription>
@@ -246,7 +247,7 @@ export const ContactUs = () => {
               I have read and agree to the{" "}
               <Link
                 href="/terms-and-privacy"
-                className="text-[#6260d9] underline"
+                className="text-[#d5415a] underline"
               >
                 Terms & Conditions
               </Link>

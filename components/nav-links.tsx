@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation"; // Import useRouter from next/navigation
+import { useEffect, useState } from "react";
 import { useMedia } from "react-use";
 import Link from "next/link";
+
 import { PiFlowerLotusLight } from "react-icons/pi";
 import { Button } from "@/components/ui/button";
 import {
@@ -14,23 +14,40 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 const sections = [
-  { id: "#about-us", label: "About Us" },
-  { id: "#services", label: "Services" },
-  { id: "#pricing", label: "Pricing" },
-  { id: "#contact-us", label: "Contact Us" },
+  {
+    id: "#services",
+    label: "Services",
+  },
+  // {
+  //   id: "#prep",
+  //   label: "How to Prepare",
+  // },
+  {
+    id: "#pricing",
+    label: "Pricing",
+  },
+  {
+    id: "#contact-us",
+    label: "Contact Us",
+  },
 ];
 
 type Props = {
   className?: string;
   mobileIconClassName?: string;
+  desktopClassName?: string;
 };
-
-export const NavLinks = ({ className, mobileIconClassName }: Props) => {
+export const NavLinks = ({
+  className,
+  mobileIconClassName,
+  desktopClassName,
+}: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const isMobile = useMedia("(max-width: 1024px)", false);
-  const router = useRouter(); // Initialize Next.js router from next/navigation
+  const router = useRouter();
 
   // Function to scroll smoothly to a section using getElementById
   const scrollToSection = (sectionId: string) => {
@@ -65,6 +82,8 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
   if (isMobile) {
     return (
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
+        <SheetTitle className="hidden">title</SheetTitle>
+        <SheetDescription className="hidden">Description</SheetDescription>
         <SheetTrigger>
           <Button
             variant="outline"
@@ -78,38 +97,31 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
             />
           </Button>
         </SheetTrigger>
-        <SheetContent side="left" className="px-2">
+        <SheetContent side="left" className="px-2 mx-auto">
           <SheetTitle className="hidden">title</SheetTitle>
           <SheetDescription className="hidden">Description</SheetDescription>
-          <nav className="flex flex-col space-y-4 pt-6">
-            <Link
-              href={"#about-us"}
-              className="text-black font-semibold"
-              onClick={() => handleNavClick("#about-us")}
-            >
-              About Us
-            </Link>
-            <Link
-              href={"#services"}
-              className="text-black font-semibold"
-              onClick={() => handleNavClick("#services")}
-            >
-              Services
-            </Link>
-            <Link
-              href={"#pricing"}
-              className="text-black font-semibold"
-              onClick={() => handleNavClick("#pricing")}
-            >
-              Pricing
-            </Link>
-            <Link
-              href={"#contact-us"}
-              className="text-black font-semibold"
-              onClick={() => handleNavClick("#contact-us")}
-            >
-              Contact Us
-            </Link>
+          <nav className="flex flex-col gap-y-2 pt-6 ">
+            {sections.map((section) => (
+              <Button variant="secondary" key={section.id}>
+                <Link
+                  key={section.id}
+                  href={`#${section.id}`}
+                  className="text-[#d5415a] font-semibold"
+                  onClick={() => handleNavClick(section.id)}
+                >
+                  {section.label}
+                </Link>
+              </Button>
+            ))}
+            <Button variant="secondary">
+              <Link
+                href={`/about-us`}
+                className="text-[#d5415a] font-semibold"
+                onClick={() => handleNavClick("/about-us")}
+              >
+                About Us
+              </Link>
+            </Button>
           </nav>
         </SheetContent>
       </Sheet>
@@ -119,18 +131,17 @@ export const NavLinks = ({ className, mobileIconClassName }: Props) => {
   return (
     <nav className="hidden lg:flex items-center justify-between gap-6">
       {sections.map((section) => (
-        <a
-          key={section.label}
-          href={section.id}
-          className={className}
-          onClick={(e) => {
-            e.preventDefault();
-            scrollToSection(section.id);
-          }}
-        >
+        <Link key={section.id} href={`${section.id}`} className={className}>
           {section.label}
-        </a>
+        </Link>
       ))}
+      <Link
+        href={`/about-us`}
+        className={desktopClassName}
+        onClick={() => handleNavClick("/about-us")}
+      >
+        About Us
+      </Link>
     </nav>
   );
 };

@@ -62,7 +62,7 @@ export const Footer = () => {
                 href="https://www.yelp.com/biz/injectivf-san-francisco"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-zinc-700 hover:text-primary"
+                className="hover:text-zinc-400 text-[#d5415a] transition duration-300"
               >
                 <span className="sr-only">Yelp</span>
                 <FaYelp className="size-6" />
@@ -71,7 +71,7 @@ export const Footer = () => {
                 href="https://www.instagram.com/injectivf/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-zinc-700 hover:text-primary"
+                className="hover:text-zinc-400 text-[#d5415a] transition duration-300"
               >
                 <span className="sr-only">Instagram</span>
                 <FaInstagram className="size-6" />
@@ -86,7 +86,7 @@ export const Footer = () => {
           </p>
           <a
             href="/terms-and-privacy"
-            className="text-xs underline text-[#6260d9]"
+            className="text-xs underline text-[#d5415a]"
           >
             Terms of Use & Privacy Policy
           </a>

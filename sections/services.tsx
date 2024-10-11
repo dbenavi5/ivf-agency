@@ -8,7 +8,7 @@ export const Services = () => {
   return (
     <section id="services" className="relative mt-24 scroll-mt-20">
       <article className="container mx-auto">
-        <h2 className="text-3xl lg:text-4xl font-bold text-[#6260d9] flex items-center justify-center mb-16">
+        <h2 className="text-3xl lg:text-4xl font-bold text-[#d5415a] flex items-center justify-center mb-16">
           Our Services
         </h2>
         <MotionP
@@ -34,7 +34,7 @@ export const Services = () => {
               className="object-cover object-left transition-transform duration-500 group-hover:scale-105"
             />
             <div className="px-6 absolute inset-0 flex flex-col items-center justify-center bg-black/20 backdrop-blur-md opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 rounded-lg">
-              <h2 className="text-xl mb-4 font-bold tracking-tighter text-[#c6d03a]">
+              <h2 className="text-xl mb-4 font-bold tracking-tighter bg-gradient-to-b from-white to-[#f4acb7] text-transparent bg-clip-text">
                 Injection Support
               </h2>
               <p className="text-white text-md tracking-tighter flex text-center">
@@ -59,7 +59,7 @@ export const Services = () => {
               className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
             />
             <div className="px-6 absolute inset-0 flex flex-col items-center justify-center bg-black/30 backdrop-blur-md opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 rounded-lg">
-              <h2 className="text-xl mb-4 font-bold tracking-tighter text-[#c6d03a]">
+              <h2 className="text-xl mb-4 font-bold tracking-tighter bg-gradient-to-b from-white to-[#f4acb7] text-transparent bg-clip-text">
                 Coaching
               </h2>
               <p className="text-white text-md tracking-tighter flex text-center">
@@ -85,7 +85,7 @@ export const Services = () => {
               className="object-cover object-right transition-transform duration-500 group-hover:scale-105"
             />
             <div className="px-6 absolute inset-0 flex flex-col items-center justify-center bg-black/30 backdrop-blur-md opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 rounded-lg">
-              <h2 className="text-xl mb-4 font-bold tracking-tighter text-[#c6d03a]">
+              <h2 className="text-xl mb-4 font-bold tracking-tighter bg-gradient-to-b from-white to-[#f4acb7] text-transparent bg-clip-text">
                 Monitoring & Wellness
               </h2>
               <p className="text-white text-md tracking-tighter flex text-center">
