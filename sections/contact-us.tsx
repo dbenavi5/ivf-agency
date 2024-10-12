@@ -263,7 +263,7 @@ export const ContactUs = () => {
             />
             {captcha ? (
               <Button
-                variant="primaryBtn"
+                variant="formBtn"
                 type="submit"
                 disabled={state.submitting}
                 className="w-full"

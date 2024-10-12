@@ -18,8 +18,8 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        primaryBtn: 'bg-gradient-to-b to-[#ebd2e2] from-[#feb3e4] text-black border-0 font-semibold',
-        formBtn: 'bg-gradient-to-b to-[#f18294] from-[#d5415a] text-black border-0 font-semibold',
+        primaryBtn: 'bg-gradient-to-t to-[#faf0e6] from-[#d9b99b] text-black border-0 font-semibold',
+        formBtn: 'bg-gradient-to-t to-[#f18294] from-[#d5415a] text-black border-0 font-semibold',
       },
       size: {
         default: "h-10 px-4 py-2",

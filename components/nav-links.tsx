@@ -102,7 +102,7 @@ export const NavLinks = ({
           <SheetDescription className="hidden">Description</SheetDescription>
           <nav className="flex flex-col gap-y-2 pt-6 ">
             {sections.map((section) => (
-              <Button variant="secondary" key={section.id}>
+              <Button variant="secondary" key={section.id} className="bg-[#faf0e6]">
                 <Link
                   key={section.id}
                   href={`#${section.id}`}
@@ -113,7 +113,7 @@ export const NavLinks = ({
                 </Link>
               </Button>
             ))}
-            <Button variant="secondary">
+            <Button variant="secondary" className="bg-[#faf0e6]">
               <Link
                 href={`/about-us`}
                 className="text-[#d5415a] font-semibold"

@@ -11,7 +11,7 @@ export const Pricing = () => {
       </h2>
       <div className="container mx-auto">
         {/* Background with gradient */}
-        <div className="relative w-full max-w-4xl mx-auto p-8 rounded-[30px] bg-[#feb3e4]/10 overflow-hidden">
+        <div className="relative w-full max-w-4xl mx-auto p-8 rounded-[30px] bg-[#d9b99b]/10 overflow-hidden">
           <h3 className="flex items-center justify-center  mb-6 font-semibold text-xl">
             Choose an Option:
           </h3>

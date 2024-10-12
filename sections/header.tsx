@@ -11,7 +11,7 @@ const DARK_LOGO_URL =
   "https://res.cloudinary.com/dpj6rkbus/image/upload/v1728704052/Inject_IVF_vgaaxs.png";
 
 const LIGHT_LOGO_URL =
-  "https://res.cloudinary.com/dpj6rkbus/image/upload/v1728704826/Inject_IVF_3_asfkey.png";
+  "https://res.cloudinary.com/dpj6rkbus/image/upload/v1728710458/Inject_IVF_b8aq4i.png";
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -60,10 +60,10 @@ export const Header = () => {
                   "hover:border-b-2 pb-2",
                   isScrolled
                     ? "text-black border-[#d5415a]"
-                    : "text-white border-[#feb3e4]"
+                    : "text-[#faf0e6] border-[#feb3e4]"
                 )}
                 mobileIconClassName={
-                  isScrolled ? "fill-[#d5415a]" : "fill-[#feb3e4]"
+                  isScrolled ? "fill-[#d5415a]" : "fill-[#faf0e6]"
                 }
                 desktopClassName={cn(
                   "hover:border-b-2 pb-2",
