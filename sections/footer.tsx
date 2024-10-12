@@ -6,7 +6,7 @@ import { FaYelp, FaInstagram } from "react-icons/fa6";
 import { useToast } from "@/hooks/use-toast";
 
 const LOGO_URL =
-  "https://res.cloudinary.com/dpj6rkbus/image/upload/v1728158238/ivf_logo_jlerxf.webp";
+  "https://res.cloudinary.com/dpj6rkbus/image/upload/v1728704052/Inject_IVF_vgaaxs.png";
 
 export const Footer = () => {
   const { toast } = useToast();
@@ -20,7 +20,7 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="bg-muted mt-10">
+    <footer className="bg-[#faf0e6] mt-10">
       <div className="container text-center justify-center px-4 py-8 mx-auto sm:px-6 lg:px-8">
         <div className="flex flex-col items-center lg:flex-row lg:justify-between">
           <div className="space-y-4 mb-8 lg:mb-0">
@@ -37,7 +37,7 @@ export const Footer = () => {
                 onClick={() => copyToClipboard("info@injectivf.com")}
                 className="flex items-center hover:text-primary"
               >
-                <Mail className="size-5 mr-2 text-indigo-600 fill-current stroke-white" />
+                <Mail className="size-5 mr-2 text-indigo-600 fill-current stroke-[#faf0e6]" />
                 info@injectivf.com
               </button>
             </div>

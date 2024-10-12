@@ -1,25 +1,35 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { IoMdArrowRoundBack } from "react-icons/io";
+
+const DARK_LOGO_URL =
+  "https://res.cloudinary.com/dpj6rkbus/image/upload/v1728704052/Inject_IVF_vgaaxs.png";
 
 export const LegalHeader = () => {
   const router = useRouter();
 
   return (
-    <header className="w-full h-20 bg-[#fcd0d8]">
-      <div className="py-5">
+    <header className="w-full h-[90px] bg-[#faf0e6]">
+      <div className="">
         <div className="container">
           <div className="flex items-center justify-between">
-            <a href="/" className="cursor-pointer">
-              <h2 className="text-2xl font-semibold">
-                Inject <span className="text-[#d5415a]">IVF</span>
-              </h2>
-              <div className="text-xs font-medium text-zinc-600">
-                Concierge Services
+            <Link href="/" className="cursor-pointer" prefetch={false}>
+              <div className="flex items-center justify-center h-[100px] w-[200px]">
+                <Image
+                  src={DARK_LOGO_URL}
+                  alt="logo"
+                  width={20}
+                  height={20}
+                  style={{ width: "auto", height: "auto" }}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+                  quality={75}
+                />
               </div>
-            </a>
+            </Link>
             <div>
               <Button
                 variant="outline"

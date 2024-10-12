@@ -271,7 +271,7 @@ export const ContactUs = () => {
                 Submit Inquiry
               </Button>
             ) : (
-              <Button type="button" variant="primaryBtn" disabled>
+              <Button type="button" variant="formBtn" disabled>
                 ReCAPTCHA before submitting
               </Button>
             )}
