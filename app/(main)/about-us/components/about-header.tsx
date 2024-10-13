@@ -16,7 +16,7 @@ export const AboutHeader = () => {
     <header className="w-full h-[90px] bg-[#faf0e6]">
       <div className="">
         <div className="container">
-          <div className="flex items-center justify-between -ml-20">
+          <div className="flex items-center justify-between -ml-10">
             <Link href="/" className="cursor-pointer" prefetch={false}>
               <div className="flex items-center justify-center h-[100px] w-[200px]">
                 <Image
