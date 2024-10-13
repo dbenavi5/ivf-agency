@@ -6,7 +6,7 @@ const URL_SERVICES =
 
 export const Services = () => {
   return (
-    <section id="services" className="relative mt-24 scroll-mt-20">
+    <section id="services" className="relative mt-24 -mb-16 scroll-mt-20">
       <article className="container mx-auto">
         <h2 className="text-3xl lg:text-4xl font-bold text-[#d5415a] flex items-center justify-center mb-16">
           Our Services

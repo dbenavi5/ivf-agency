@@ -61,7 +61,7 @@ export const ContactUs = () => {
       className="max-w-2xl my-20 mx-4 md:mx-auto lg:mx-auto scroll-mt-20"
     >
       <CardHeader>
-        <CardTitle className="text-center text-[#d5415a]">
+        <CardTitle className="text-xl my-5 lg:text-2xl text-center text-[#d5415a]">
           IVF Concierge Service Inquiry
         </CardTitle>
         <CardDescription>

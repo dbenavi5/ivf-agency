@@ -30,20 +30,20 @@ export const Footer = () => {
                 onClick={() => copyToClipboard("415.236.0074")}
                 className="flex items-center justify-center hover:text-primary"
               >
-                <Phone className="size-5 mr-2 text-green-600 fill-current" />
+                <Phone className="size-5 mr-2 text-[#d5415a] fill-current" />
                 415.236.0074
               </button>
               <button
                 onClick={() => copyToClipboard("info@injectivf.com")}
                 className="flex items-center hover:text-primary"
               >
-                <Mail className="size-5 mr-2 text-indigo-600 fill-current stroke-[#faf0e6]" />
+                <Mail className="size-5 mr-2 text-[#d5415a] fill-current stroke-[#faf0e6]" />
                 info@injectivf.com
               </button>
             </div>
           </div>
           <a href="/">
-            <div className="mb-8 lg:mb-0 cursor-pointer flex items-center justify-center h-[100px] w-[200px]">
+            <div className="mb-8 lg:mb-0 cursor-pointer flex items-center justify-center h-[150px] w-[250px]">
               <Image
                 src={LOGO_URL}
                 alt="logo"

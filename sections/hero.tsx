@@ -31,7 +31,7 @@ export const Hero = () => {
             <h1 className="text-4xl lg:text-5xl font-bold tracking-tighter bg-gradient-to-b to-[#faf0e6] from-[#d9b99b] text-transparent bg-clip-text mt-60 z-10">
               Your Path to Parenthood Starts Here
             </h1>
-            <p className="text-md lg:text-xl text-[#fce7ea] tracking-tight mt-6 lg:mt-10 z-10">
+            <p className="text-md lg:text-xl text-white tracking-tight mt-6 lg:mt-10 z-10">
               Experience the comfort and care of InjectIVF, a female-owned
               business offering reliable fertility injection services right at
               home. With compassionate support, we’re here to make managing your

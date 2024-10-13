@@ -40,7 +40,7 @@ export const Header = () => {
     >
       <div className="max-w-screen-2xl mx-auto">
         <div className="container">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between -ml-20">
             <Link href="/" className="cursor-pointer" prefetch={false}>
               <div className="flex items-center justify-center h-[100px] w-[200px]">
                 <Image

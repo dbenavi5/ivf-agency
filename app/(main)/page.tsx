@@ -4,7 +4,7 @@ import { Hero } from "@/sections/hero";
 import { Pricing } from "@/sections/pricing";
 import { Services } from "@/sections/services";
 import { QuoteBlock } from "@/components/quote-block";
-// import { PrepSection } from "@/sections/prep-section";
+import { PrepSection } from "@/sections/prep-section";
 
 export default function Home() {
   return (
@@ -15,7 +15,7 @@ export default function Home() {
         <QuoteBlock />
         <Services />
         {/* How to prep */}
-        {/* <PrepSection /> */}
+        <PrepSection />
         <Pricing />
         <ContactUs />
       </main>

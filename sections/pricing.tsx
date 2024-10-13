@@ -2,6 +2,7 @@ import React from "react";
 import { FaSyringe, FaUserMd } from "react-icons/fa"; // Import icons
 import { MdOutlineAddLocation } from "react-icons/md";
 import { LiaSuperpowers } from "react-icons/lia";
+import { Metrics } from "@/components/metrics";
 
 export const Pricing = () => {
   return (
@@ -11,7 +12,7 @@ export const Pricing = () => {
       </h2>
       <div className="container mx-auto">
         {/* Background with gradient */}
-        <div className="relative w-full max-w-4xl mx-auto p-8 rounded-[30px] bg-[#d9b99b]/10 overflow-hidden">
+        <div className="relative w-full max-w-4xl p-8 rounded-[30px] bg-[#d9b99b]/10 overflow-hidden">
           <h3 className="flex items-center justify-center  mb-6 font-semibold text-xl">
             Choose an Option:
           </h3>
@@ -34,9 +35,7 @@ export const Pricing = () => {
               <div className="flex items-center justify-center">
                 <LiaSuperpowers className="text-4xl text-[#d5415a] mb-4" />
               </div>
-              <h3 className="text-lg font-bold">
-                Trigger Shot Only
-              </h3>
+              <h3 className="text-lg font-bold">Trigger Shot Only</h3>
               <p className="text-xl font-semibold mt-2">$225</p>
             </div>
 
@@ -61,6 +60,9 @@ export const Pricing = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="py-8">
+        <Metrics />
       </div>
     </section>
   );
