@@ -34,7 +34,10 @@ export const LegalHeader = () => {
               <Button
                 variant="outline"
                 size="sm"
-                onClick={() => router.back()}
+                onClick={(e) => {
+                  e.preventDefault();
+                  router.back();
+                }}
                 className="font-normal bg-white/10 hover:bg-white/20 border-none focus-visible:ring-offset-0 
             focus-visible:ring-transparent outline-none focus:bg-white/30 transition flex items-center justify-center"
               >

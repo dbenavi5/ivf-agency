@@ -6,7 +6,7 @@ import { Metrics } from "@/components/metrics";
 
 export const Pricing = () => {
   return (
-    <section id="pricing" className="relative mb-24 scroll-mt-20">
+    <section id="pricing" className="relative mb-24 scroll-mt-24">
       <h2 className="text-3xl lg:text-4xl font-bold text-[#d5415a] flex items-center justify-center mb-6 lg:mb-12">
         Pricing
       </h2>

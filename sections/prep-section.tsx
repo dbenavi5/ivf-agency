@@ -1,13 +1,11 @@
 import Image from "next/image";
 
-type Props = {};
-
 const PREGNANT_WOMEN =
   "https://res.cloudinary.com/dpj6rkbus/image/upload/v1727898564/woman-6785370_640_cd5mzj.jpg";
 
-export const PrepSection = ({}: Props) => {
+export const PrepSection = () => {
   return (
-    <section id="services" className="relative my-24 scroll-mt-20">
+    <section id="prep" className="relative my-24 scroll-mt-24">
       <div className="container">
         <h2 className="text-3xl lg:text-4xl font-bold text-[#d5415a] flex items-center justify-center mb-10 md:mb-16">
           Prepare for IVF

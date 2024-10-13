@@ -58,7 +58,7 @@ export const ContactUs = () => {
   return (
     <Card
       id="contact-us"
-      className="max-w-2xl my-20 mx-4 md:mx-auto lg:mx-auto scroll-mt-20"
+      className="max-w-2xl my-20 mx-4 md:mx-auto lg:mx-auto scroll-mt-24"
     >
       <CardHeader>
         <CardTitle className="text-xl my-5 lg:text-2xl text-center text-[#d5415a]">

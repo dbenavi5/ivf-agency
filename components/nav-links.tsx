@@ -1,5 +1,3 @@
-"use client";
-
 import { useEffect, useState } from "react";
 import { useMedia } from "react-use";
 import Link from "next/link";
@@ -15,23 +13,20 @@ import {
 } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
+import { FaYelp, FaInstagram } from "react-icons/fa6";
 
 const sections = [
   {
     id: "#services",
     label: "Services",
   },
-  // {
-  //   id: "#prep",
-  //   label: "How to Prepare",
-  // },
+  {
+    id: "#prep",
+    label: "IVF Prep",
+  },
   {
     id: "#pricing",
     label: "Pricing",
-  },
-  {
-    id: "#contact-us",
-    label: "Contact Us",
   },
 ];
 
@@ -49,7 +44,6 @@ export const NavLinks = ({
   const isMobile = useMedia("(max-width: 1024px)", false);
   const router = useRouter();
 
-  // Function to scroll smoothly to a section using getElementById
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId.replace("#", ""));
     if (section) {
@@ -57,21 +51,18 @@ export const NavLinks = ({
     }
   };
 
-  // Function to handle navigation click for mobile view and refresh the page
   const handleNavClick = (sectionId: string) => {
-    closeNav(); // Close the mobile navigation sheet first
+    closeNav();
     setTimeout(() => {
-      router.push(sectionId); // Navigate to the section
-      router.refresh(); // Force a page refresh to update the content
-    }, 100); // Delay to ensure the sheet closes before navigation
+      router.push(sectionId);
+      router.refresh();
+    }, 100);
   };
 
-  // Close the sheet
   const closeNav = () => {
     setIsOpen(false);
   };
 
-  // Handle hash changes on page load or if the URL is updated manually
   useEffect(() => {
     const hash = window.location.hash;
     if (hash) {
@@ -97,32 +88,81 @@ export const NavLinks = ({
             />
           </Button>
         </SheetTrigger>
-        <SheetContent side="left" className="px-2 mx-auto">
+        <SheetContent
+          side="left"
+          className="px-2 mx-auto flex flex-col justify-between h-full"
+        >
           <SheetTitle className="hidden">title</SheetTitle>
           <SheetDescription className="hidden">Description</SheetDescription>
-          <nav className="flex flex-col gap-y-2 pt-6 ">
-            {sections.map((section) => (
-              <Button variant="secondary" key={section.id} className="bg-[#faf0e6]">
-                <Link
+          {/* Navigation Links */}
+          <nav className="flex-grow">
+            <div className="flex flex-col gap-y-2 pt-6">
+              {sections.map((section) => (
+                <Button
+                  variant="secondary"
                   key={section.id}
-                  href={`#${section.id}`}
-                  className="text-[#d5415a] font-semibold"
-                  onClick={() => handleNavClick(section.id)}
+                  className="bg-[#faf0e6]"
                 >
-                  {section.label}
+                  <Link
+                    key={section.id}
+                    href={`#${section.id}`}
+                    className="text-[#d5415a] font-semibold"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavClick(section.id);
+                    }}
+                  >
+                    {section.label}
+                  </Link>
+                </Button>
+              ))}
+              <Button variant="secondary" className="bg-[#faf0e6]">
+                <Link
+                  href={`/about-us`}
+                  className="text-[#d5415a] font-semibold"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavClick("/about-us");
+                  }}
+                >
+                  About Us
                 </Link>
               </Button>
-            ))}
-            <Button variant="secondary" className="bg-[#faf0e6]">
-              <Link
-                href={`/about-us`}
-                className="text-[#d5415a] font-semibold"
-                onClick={() => handleNavClick("/about-us")}
-              >
-                About Us
-              </Link>
-            </Button>
+              <Button variant="formBtn">
+                <Link
+                  href={`#contact-us`}
+                  className="text-white font-semibold"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavClick("#contact-us");
+                  }}
+                >
+                  Contact Us
+                </Link>
+              </Button>
+            </div>
           </nav>
+          {/* Social Icons - Fixed at Bottom */}
+          <div className="flex items-center justify-center space-x-4 mt-auto pb-4">
+            <a
+              href="https://www.yelp.com/biz/injectivf-san-francisco"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-zinc-400 text-[#d5415a] transition duration-300"
+            >
+              <span className="sr-only">Yelp</span>
+              <FaYelp className="size-6" />
+            </a>
+            <a
+              href="https://www.instagram.com/injectivf/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-zinc-400 text-[#d5415a] transition duration-300"
+            >
+              <span className="sr-only">Instagram</span>
+              <FaInstagram className="size-6" />
+            </a>
+          </div>
         </SheetContent>
       </Sheet>
     );
