@@ -99,7 +99,7 @@ export const LegalContent = () => {
           information you provide in your message. Formspree may store this data
           securely and has its own privacy practices, which you can review in
           their{" "}
-          <a href="https://formspree.io/legal/privacy-policy/" className="text-[#6260d9] font-medium">
+          <a href="https://formspree.io/legal/privacy-policy/" className="text-mainColor font-medium">
             Privacy Policy
           </a>
           . InjectIVF will only use this data for communication and will not

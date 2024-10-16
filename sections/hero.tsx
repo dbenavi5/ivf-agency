@@ -20,7 +20,7 @@ export const Hero = () => {
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/70 z-0 " />
       {/* Fading Bottom Effect with White */}
-      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white to-transparent z-10" />
+      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-secondMainColor to-transparent z-10" />
       <div className="container">
         <div className="relative z-10 text-center justify-center">
           <MotionDiv
@@ -28,7 +28,7 @@ export const Hero = () => {
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 1, delay: 0.5 }}
           >
-            <h1 className="text-4xl lg:text-5xl font-bold tracking-tighter bg-gradient-to-b to-[#faf0e6] from-[#d9b99b] text-transparent bg-clip-text mt-60 z-10">
+            <h1 className="text-4xl lg:text-5xl font-bold tracking-tighter bg-gradient-to-b to-secondMainColor from-[#d9b99b] text-transparent bg-clip-text mt-60 z-10">
               Your Path to Parenthood Starts Here
             </h1>
             <p className="text-md lg:text-xl text-white tracking-tight mt-6 lg:mt-10 z-10">

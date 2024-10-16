@@ -1,5 +1,10 @@
+import { PageWrapper } from "@/components/page-wrapper";
 import { LegalContent } from "../components/legal-content";
 
 export default function LegalPage() {
-  return <LegalContent />;
+  return (
+    <PageWrapper>
+      <LegalContent />
+    </PageWrapper>
+  );
 }

@@ -4,14 +4,13 @@ import Link from "next/link";
 import { NavLinks } from "@/components/nav-links";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
-import Image from "next/image";
+import { MotionImg } from "@/components/motion-div";
 
 const DARK_LOGO_URL =
-  "https://res.cloudinary.com/dpj6rkbus/image/upload/v1728704052/Inject_IVF_vgaaxs.png";
+  "https://res.cloudinary.com/dpj6rkbus/image/upload/v1729052364/concierge_services2_wncgup.png";
 
 const LIGHT_LOGO_URL =
-  "https://res.cloudinary.com/dpj6rkbus/image/upload/v1728710458/Inject_IVF_b8aq4i.png";
+  "https://res.cloudinary.com/dpj6rkbus/image/upload/v1729052106/concierge_services_b6jhzr.png";
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -33,7 +32,7 @@ export const Header = () => {
       className={cn(
         `fixed w-full h-[90px] top-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "bg-[#faf0e6] text-black shadow-md"
+            ? "bg-secondMainColor text-black shadow-md"
             : "bg-transparent text-white z-10"
         }`
       )}
@@ -43,33 +42,35 @@ export const Header = () => {
           <div className="flex items-center justify-between -ml-10">
             <Link href="/" className="cursor-pointer" prefetch={false}>
               <div className="flex items-center justify-center h-[100px] w-[200px]">
-                <Image
+                <MotionImg
+                  initial={{ opacity: 0, x: -100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 1 }}
                   src={isScrolled ? `${DARK_LOGO_URL}` : `${LIGHT_LOGO_URL}`}
                   alt="logo"
                   width={20}
                   height={20}
                   style={{ width: "auto", height: "auto" }}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
-                  quality={75}
                 />
               </div>
             </Link>
             <div>
               <NavLinks
                 className={cn(
-                  "hover:border-b-2 pb-2",
+                  "hover:border-b-2 pb-2 border-mainColor",
                   isScrolled
-                    ? "text-black border-[#d5415a]"
-                    : "text-[#faf0e6] border-[#feb3e4]"
+                    ? "text-black "
+                    : "text-secondMainColor"
                 )}
                 mobileIconClassName={
-                  isScrolled ? "fill-[#d5415a]" : "fill-[#faf0e6]"
+                  isScrolled ? "fill-mainColor" : "fill-secondMainColor"
                 }
                 desktopClassName={cn(
-                  "hover:border-b-2 pb-2",
+                  "hover:border-b-2 pb-2 border-mainColor",
                   isScrolled
-                    ? "text-black border-[#d5415a]"
-                    : "text-white border-[#feb3e4]"
+                    ? "text-black "
+                    : "text-white"
                 )}
               />
             </div>

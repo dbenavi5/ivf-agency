@@ -7,13 +7,13 @@ import { useRouter } from "next/navigation";
 import { IoMdArrowRoundBack } from "react-icons/io";
 
 const DARK_LOGO_URL =
-  "https://res.cloudinary.com/dpj6rkbus/image/upload/v1728704052/Inject_IVF_vgaaxs.png";
+  "https://res.cloudinary.com/dpj6rkbus/image/upload/v1729052364/concierge_services2_wncgup.png";
 
 export const AboutHeader = () => {
   const router = useRouter();
 
   return (
-    <header className="w-full h-[90px] bg-[#faf0e6]">
+    <header className="w-full h-[90px] bg-secondMainColor shadow-md">
       <div className="">
         <div className="container">
           <div className="flex items-center justify-between -ml-10">
@@ -36,7 +36,7 @@ export const AboutHeader = () => {
                 size="sm"
                 onClick={(e) => {
                   e.preventDefault();
-                  router.back()
+                  router.back();
                 }}
                 className="font-normal bg-white/10 hover:bg-white/20  border-none focus-visible:ring-offset-0 
             focus-visible:ring-transparent outline-none focus:bg-white/30 transition flex items-center justify-center"

@@ -6,7 +6,7 @@ import { FaYelp, FaInstagram } from "react-icons/fa6";
 import { useToast } from "@/hooks/use-toast";
 
 const LOGO_URL =
-  "https://res.cloudinary.com/dpj6rkbus/image/upload/v1728704052/Inject_IVF_vgaaxs.png";
+  "https://res.cloudinary.com/dpj6rkbus/image/upload/v1729052364/concierge_services2_wncgup.png";
 
 export const Footer = () => {
   const { toast } = useToast();
@@ -20,8 +20,8 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="bg-[#faf0e6] mt-10">
-      <div className="container text-center justify-center px-4 py-8 mx-auto sm:px-6 lg:px-8">
+    <footer className="bg-secondMainColor mt-24 border-t border-muted-foreground/10">
+      <div className="container text-center justify-center px-4 py-8 mx-auto sm:px-6 lg:px-8 ">
         <div className="flex flex-col items-center lg:flex-row lg:justify-between">
           <div className="space-y-4 mb-8 lg:mb-0">
             <p className="font-medium text-lg">Contact Us</p>
@@ -30,14 +30,14 @@ export const Footer = () => {
                 onClick={() => copyToClipboard("415.236.0074")}
                 className="flex items-center justify-center hover:text-primary"
               >
-                <Phone className="size-5 mr-2 text-[#d5415a] fill-current" />
+                <Phone className="size-5 mr-2 text-mainColor fill-current" />
                 415.236.0074
               </button>
               <button
                 onClick={() => copyToClipboard("info@injectivf.com")}
                 className="flex items-center hover:text-primary"
               >
-                <Mail className="size-5 mr-2 text-[#d5415a] fill-current stroke-[#faf0e6]" />
+                <Mail className="size-5 mr-2 text-mainColor fill-current stroke-secondMainColor" />
                 info@injectivf.com
               </button>
             </div>
@@ -62,7 +62,7 @@ export const Footer = () => {
                 href="https://www.yelp.com/biz/injectivf-san-francisco"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-zinc-400 text-[#d5415a] transition duration-300"
+                className="hover:text-zinc-400 text-mainColor transition duration-300"
               >
                 <span className="sr-only">Yelp</span>
                 <FaYelp className="size-6" />
@@ -71,7 +71,7 @@ export const Footer = () => {
                 href="https://www.instagram.com/injectivf/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-zinc-400 text-[#d5415a] transition duration-300"
+                className="hover:text-zinc-400 text-mainColor transition duration-300"
               >
                 <span className="sr-only">Instagram</span>
                 <FaInstagram className="size-6" />
@@ -86,7 +86,7 @@ export const Footer = () => {
           </p>
           <a
             href="/terms-and-privacy"
-            className="text-xs underline text-[#d5415a]"
+            className="text-xs underline text-mainColor"
           >
             Terms of Use & Privacy Policy
           </a>

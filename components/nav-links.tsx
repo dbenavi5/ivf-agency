@@ -14,6 +14,7 @@ import {
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import { FaYelp, FaInstagram } from "react-icons/fa6";
+import { MotionButton, MotionNav } from "./motion-div";
 
 const sections = [
   {
@@ -75,18 +76,16 @@ export const NavLinks = ({
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
         <SheetTitle className="hidden">title</SheetTitle>
         <SheetDescription className="hidden">Description</SheetDescription>
-        <SheetTrigger>
-          <Button
-            variant="outline"
-            size="sm"
+        <SheetTrigger asChild>
+          <MotionButton
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, delay: 0 }}
             className="font-normal bg-white/10 hover:bg-white/20 hover:text-white border-none focus-visible:ring-offset-0 
-            focus-visible:ring-transparent outline-none text-white focus:bg-white/30 transition"
-            asChild
+            focus-visible:ring-transparent outline-none text-white focus:bg-white/30 transition btnVariant outlineBtn h-9 rounded-md px-3"
           >
-            <PiFlowerLotusLight
-              className={cn("size-12", mobileIconClassName)}
-            />
-          </Button>
+            <PiFlowerLotusLight className={cn("size-6", mobileIconClassName)} />
+          </MotionButton>
         </SheetTrigger>
         <SheetContent
           side="left"
@@ -101,12 +100,12 @@ export const NavLinks = ({
                 <Button
                   variant="secondary"
                   key={section.id}
-                  className="bg-[#faf0e6]"
+                  className="bg-secondMainColor"
                 >
                   <Link
                     key={section.id}
                     href={`#${section.id}`}
-                    className="text-[#d5415a] font-semibold"
+                    className="text-mainColor font-semibold"
                     onClick={(e) => {
                       e.preventDefault();
                       handleNavClick(section.id);
@@ -116,10 +115,10 @@ export const NavLinks = ({
                   </Link>
                 </Button>
               ))}
-              <Button variant="secondary" className="bg-[#faf0e6]">
+              <Button variant="secondary" className="bg-secondMainColor">
                 <Link
                   href={`/about-us`}
-                  className="text-[#d5415a] font-semibold"
+                  className="text-mainColor font-semibold"
                   onClick={(e) => {
                     e.preventDefault();
                     handleNavClick("/about-us");
@@ -148,7 +147,7 @@ export const NavLinks = ({
               href="https://www.yelp.com/biz/injectivf-san-francisco"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-zinc-400 text-[#d5415a] transition duration-300"
+              className="hover:text-zinc-400 text-mainColor transition duration-300"
             >
               <span className="sr-only">Yelp</span>
               <FaYelp className="size-6" />
@@ -157,7 +156,7 @@ export const NavLinks = ({
               href="https://www.instagram.com/injectivf/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-zinc-400 text-[#d5415a] transition duration-300"
+              className="hover:text-zinc-400 text-mainColor transition duration-300"
             >
               <span className="sr-only">Instagram</span>
               <FaInstagram className="size-6" />
@@ -169,7 +168,12 @@ export const NavLinks = ({
   }
 
   return (
-    <nav className="hidden lg:flex items-center justify-between gap-6">
+    <MotionNav
+      initial={{ opacity: 0, x: 100 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 1, delay: 0 }}
+      className="hidden lg:flex items-center justify-between gap-6"
+    >
       {sections.map((section) => (
         <Link key={section.id} href={`${section.id}`} className={className}>
           {section.label}
@@ -182,6 +186,6 @@ export const NavLinks = ({
       >
         About Us
       </Link>
-    </nav>
+    </MotionNav>
   );
 };

@@ -10,7 +10,7 @@ const config: Config = {
   ],
   theme: {
     fontSize: {
-      xs:['0.75rem','1rem'],
+      xs: ['0.75rem', '1rem'],
       sm: ['0.875rem', '1.25rem'],
       base: ['1rem', '1.5rem'],
       lg: ['1.125rem', '1.75rem'],
@@ -43,6 +43,14 @@ const config: Config = {
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
+        },
+        mainColor: {
+          DEFAULT: "#d77485",
+          foreground: "#d77485",
+        },
+        secondMainColor: {
+          DEFAULT: "#faf0e6",
+          foreground: "#faf0e6",
         },
         primary: {
           DEFAULT: "hsl(var(--primary))",

@@ -14,7 +14,6 @@ export default function Home() {
         <Hero />
         <QuoteBlock />
         <Services />
-        {/* How to prep */}
         <PrepSection />
         <Pricing />
         <ContactUs />

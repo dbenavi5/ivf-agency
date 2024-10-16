@@ -1,5 +1,4 @@
-import Image from "next/image";
-// import { MotionDiv } from "@/components/motion-div";
+import { MotionH3, MotionImg, MotionP } from "@/components/motion-div";
 
 const URL_MISSION =
   "https://res.cloudinary.com/dpj6rkbus/image/upload/w_600,h_400,c_fill,q_auto,f_auto/v1727898564/pregnancy-7214373_640_otfc4m.jpg";
@@ -8,75 +7,81 @@ const URL_STORY =
 
 export const AboutUs = () => {
   return (
-    <div className="mt-24 z-0 scroll-mt-20">
+    <div className="mt-20 z-0 scroll-mt-20">
       <div className="container mx-auto px-6 md:px-12">
-        <h2 className="text-3xl lg:text-4xl font-bold text-[#d5415a] flex items-center justify-center mb-16">
+        <h2 className="text-3xl lg:text-4xl font-bold text-mainColor flex items-center justify-center mb-16">
           Who are we?
         </h2>
         {/* Our Mission Section */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-16 py-0 lg:py-10">
-          <div
-            // whileInView={{ opacity: 1, x: 0 }}
-            // initial={{ opacity: 0, x: -100 }}
-            // transition={{ duration: 1 }}
-            className="md:w-1/2"
-          >
-            <h3 className="text-2xl lg:text-3xl font-bold mb-4">Our Mission</h3>
-            <p className="text-sm lg:text-lg leading-relaxed">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8 my-16 lg:my-40">
+          <div className="md:w-1/2">
+            <MotionH3
+              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, x: -100 }}
+              transition={{ duration: 1 }}
+              className="text-2xl lg:text-3xl font-bold mb-4"
+            >
+              Our Mission
+            </MotionH3>
+            <MotionP
+              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, x: -100 }}
+              transition={{ duration: 1 }}
+              className="text-sm lg:text-lg leading-relaxed"
+            >
               At InjectIVF, we treat every patient like family. That means
               reliable, compassionate care that goes beyond just administering
               injections—it&apos;s about making you feel supported, heard, and
               cared for, every step of the way. We&apos;re here to help you take
               back control of your fertility journey, with a service that&apos;s
               as comforting as it is professional.
-            </p>
+            </MotionP>
           </div>
-          <div
-            // whileInView={{ opacity: 1, x: 0 }}
-            // initial={{ opacity: 0, x: 100 }}
-            // transition={{ duration: 1 }}
-            className="md:w-1/2"
-          >
-            <Image
+          <div className="md:w-1/2">
+            <MotionImg
+              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, x: 100 }}
+              transition={{ duration: 1 }}
               src={URL_MISSION}
               alt="Mission Image"
               width={600}
               height={400}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
-              quality={75}
               className="rounded-lg shadow-lg"
-              priority
             />
           </div>
         </div>
 
         {/* Our Story Section */}
-        <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-8 py-10">
-          <div
-            // whileInView={{ opacity: 1, x: 0 }}
-            // initial={{ opacity: 0, x: -100 }}
-            // transition={{ duration: 1 }}
-            className="md:w-1/2"
-          >
-            <Image
+        <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-8 my-16 lg:my-40">
+          <div className="md:w-1/2">
+            <MotionImg
+              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, x: -100 }}
+              transition={{ duration: 1 }}
               src={URL_STORY}
               alt="Story Image"
               width={600}
               height={400}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
-              quality={75}
               className="rounded-lg shadow-lg"
-              priority
             />
           </div>
-          <div
-            // whileInView={{ opacity: 1, x: 0 }}
-            // initial={{ opacity: 0, x: 100 }}
-            // transition={{ duration: 2 }}
-            className="md:w-1/2"
-          >
-            <h3 className="text-2xl lg:text-3xl font-bold mb-4">Our Story</h3>
-            <p className="text-sm lg:text-lg leading-relaxed">
+          <div className="md:w-1/2">
+            <MotionH3
+              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, x: 100 }}
+              transition={{ duration: 2, delay: 2 }}
+              className="text-2xl lg:text-3xl font-bold mb-4"
+            >
+              Our Story
+            </MotionH3>
+            <MotionP
+              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, x: 100 }}
+              transition={{ duration: 2, delay: 2 }}
+              className="text-sm lg:text-lg leading-relaxed"
+            >
               InjectIVF was founded by a close-knit group of women who deeply
               understood the stress and uncertainty of fertility treatments.
               After seeing loved ones go through IVF, we wanted to create a
@@ -84,11 +89,9 @@ export const AboutUs = () => {
               patients&apos; homes. Today, InjectIVF is all about providing
               compassionate, reliable support for every step of your fertility
               journey.
-            </p>
+            </MotionP>
           </div>
         </div>
-
-        {/* <Metrics /> */}
       </div>
     </div>
   );
